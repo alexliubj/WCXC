@@ -1,0 +1,48 @@
+User:
+Member:  MemberID, FirstName, LastName, School, Major, HouseNo, Street, City, Province, PostalCode, Image, AccountName, Password, Status, Email, Phone, LastLoginDate, Role
+
+
+
+Forum:
+Thread: ThreadID, ThreadName, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID， ParentID
+
+LikeList: AccountName, ThreadID
+
+
+
+YellowPage:
+Ad: AdType, ID, Title, Content, PostDate, UpdateDate, ServiceRegion, Type, Address, DeliverPrice, Longtitude, Latitude, MemberID, Image
+
+	
+	
+	Item: ItemID, ResID, ItemName, ItemImage, ItemPrice, ItemType
+	
+	Order: OrderID, MemberID, OrderDate, Status, totalPrice
+	
+	OrderLine: ItemID, Quantity, OrderID, ItemName, ItemImage, ItemPrice, ItemSoldNumber
+	
+	ResComment: CommentID, ResID, MemberID, Rating, Date, CommentContent
+
+
+
+Magazine:
+Article: ArticleID, ArticleLargeImage, ArticleSmallImage, ArticleTitle, ArticleContent, ArticleIssue, ImagePosition, DisplayStyle
+
+MagComments: CommentID, CommentContent, MemberID, MagID, CommentPostaDate, CommentUpdateDate
+
+
+
+VIP Card:
+Card: CardID, CardType, CardTitle, CardBarcode, CardNumber, CardDes, FrontViewImage, BackViewImage, MemberID
+
+
+
+Calender: Date, EventName, EventDes
+
+现有问题： 
+2, Calender 用户自定义事件功能
+3，CARD需要再想想
+
+待RESEARCH：
+
+论坛多图片存储
