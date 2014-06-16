@@ -1,5 +1,12 @@
-1.
-2.
+1. Get All items by rest id
+
+input: restid
+output: item Array (ItemID,ResID,ItemName,ItemImage,ItemPrice,ItemType)
+methodname: getItemByRestId
+methodType: http get
+
+
+2. Login...TBA
 3.
 4.
 5.

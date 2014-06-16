@@ -1,0 +1,12 @@
+TODO List:
+
+1. install MYSQL WorkBench
+Connect to remote server use pem file and user name 'root' pwd 'wechao'
+
+2. setup remaining tables in database WeChao according to ERD
+2.1 export sql scripts and dump it in local mysql environment
+
+3. Finish interface.txt list
+
+4. Start developing...xxxx.php
+5. Test interfaces.

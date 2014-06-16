@@ -1,0 +1,54 @@
+1. login (LINUX)
+
+To access your instance:
+
+    Open an SSH client. (find out how to connect using PuTTY)
+    Locate your private key file (wechaokey.pem). The wizard automatically detects the key you used to launch the instance.
+    Your key must not be publicly viewable for SSH to work. Use this command if needed:
+
+    chmod 400 wechaokey.pem
+
+    Connect to your instance using its Public IP:
+
+    54.213.167.5
+
+Example:
+
+ssh -i wechaokey.pem ec2-user@54.213.167.5
+
+Please note that in most cases the username above will be correct, however please ensure that you read your AMI usage instructions to ensure that the AMI owner has not changed the default AMI username. 
+
+2. open a directory
+
+cd abc/
+
+3. back to upper level 
+
+cd ..
+
+4. create a file
+
+sudo vim aa.php
+
+
+5. put interfaces (xxx.php) in this place
+/var/www/html
+
+6. modify a file 
+i to input
+
+7. save a file
+
+:wq
+
+8 quit not save
+
+:q!
+
+9 edit a file
+
+sudo vi xxx.php
+
+10 copy and paste
+
+ctr + c , ctr+v

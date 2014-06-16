@@ -1,0 +1,24 @@
+http://jsonlint.com/
+
+put json int textbox of this page, then validate
+
+http://54.213.167.5/getItemByRestId.php?restid=1
+
+[
+    {
+        "ItemID": "1",
+        "ResID": "1",
+        "ItemName": null,
+        "ItemImage": ",,,,,",
+        "ItemPrice": "2.2",
+        "ItemType": "1"
+    },
+    {
+        "ItemID": "2",
+        "ResID": "1",
+        "ItemName": null,
+        "ItemImage": ",,,,,",
+        "ItemPrice": "2.3",
+        "ItemType": "1"
+    }
+]
