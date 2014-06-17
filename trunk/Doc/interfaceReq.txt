@@ -8,31 +8,41 @@ Front:
 		methodname: MemberLogin
 		methodType: http get
 
+	MemberCard:
+	#getMagzineByid(magdId)
+	input magid,
+	output:preId,nextId,array(articleid, details,imageType,imagePosition,title,articleDate,author/from)
 
+	#getCommentsByArticleId(articleId)
+	input articleId
+	output: array(coomentdes,date,userid)
+
+	#postCommentToArticle
+	input: articleid,username,userid,content
 
 	YellowPage:
 
 		Ad Summary
 
-		1. Get All Ad info by AdType
+		#1. Get All Ad info by AdType
 
 		input: AdType
-		output: Ad Array(AdType, AdID, Title, Content, MemberID), Member Array(AccountName)
+		output: Ad Array(AdType, AdID, Title, Content, MemberID, accountId,AccountName,adPostDate,Longtitude, Latitude)
 		methodname: GetAllAdInfoByAdType
 		methodType: http get
 
 
 		Rest Summary:
-		1. Get All rest Info 
+		#1. Get All rest Info 
 
 		input: none
 		output: Ad Array(AdID, Title, Content, ServiceRegion, Address, DeliverPrice, Longtitude, Latitude, MemberID, Image)
 		methodname: GetRestInfo
-		methodType: http post
+		methodType: http get
 
 
 		Menu:
-		1. Get All items by RestID 
+		#1. Get All items by RestID 
 
 		input: AdID
 		output: item Array (ItemID,ItemName,ItemImage,ItemPrice,ItemType)
@@ -40,7 +50,7 @@ Front:
 		methodType: http get
 
 
-		ShoppingCard:
+		XXXX-ShoppingCard:
 		1.Creat Order
 
 		input: Order(MemberID, OrderDate, TotalPrice, Des), OrderLine Array(ItemID, Quantity, ItemName, ItemImage, ItemPrice)
@@ -49,7 +59,7 @@ Front:
 		methodType: http get
 
 
-		Ad Detail Interface: 整合
+		XXX-Ad Detail Interface: 整合
 		1. Get Ad Detail Info by AdID
 
 		input: AdID
