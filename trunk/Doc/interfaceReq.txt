@@ -1,13 +1,97 @@
-1. Get All items by rest id
+Front:
+	Login Interface:
 
-input: restid
-output: item Array (ItemID,ResID,ItemName,ItemImage,ItemPrice,ItemType)
-methodname: getItemByRestId
-methodType: http get
+		1. Login
+
+		input: Email/Phone, Password
+		output: LoginRet (MemberID, Role)
+		methodname: MemberLogin
+		methodType: http get
 
 
-2. Login...TBA
-3.
-4.
-5.
-6.
+
+	YellowPage:
+
+		Ad Summary
+
+		1. Get All Ad info by AdType
+
+		input: AdType
+		output: Ad Array(AdType, AdID, Title, Content, MemberID), Member Array(AccountName)
+		methodname: GetAllAdInfoByAdType
+		methodType: http get
+
+
+		Rest Summary:
+		1. Get All rest Info 
+
+		input: none
+		output: Ad Array(AdID, Title, Content, ServiceRegion, Address, DeliverPrice, Longtitude, Latitude, MemberID, Image)
+		methodname: GetRestInfo
+		methodType: http get
+
+
+		Menu:
+		1. Get All items by RestID 
+
+		input: AdID
+		output: item Array (ItemID,ItemName,ItemImage,ItemPrice,ItemType)
+		methodname: GetItemByRestID
+		methodType: http get
+
+
+		ShoppingCard:
+		1.Creat Order
+
+		input: Order(MemberID, OrderDate, TotalPrice, Des), OrderLine Array(ItemID, Quantity, ItemName, ItemImage, ItemPrice)
+		output: int
+		methodname: CreateOrder
+		methodType: http get
+
+
+		Ad Detail Interface:
+		1. Get Ad Detail Info by AdID
+
+		input: AdID
+		output: Ad(Title, Content, PostDate, UpdateDate, ServiceRegion, Address, Longtitude, Latitude, MemberID), Member Array(AccountName, Email, Phone, Role)
+		methodname: GetAdDetailInfoByAdID
+		methodType: http get
+	
+	
+	Forum:
+	
+		Thread Summary:
+
+		1. Get Thread List
+
+		input: none
+		output: Thread Array(ThreadID, ThreadName, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID, LastCommentDate)
+		methodname: GetThreadList
+		methodType: http get
+
+
+		Thread Detail:
+		1. Get Thread Info
+
+		input: ThreadID
+		output: Thread (ThreadName, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID)
+		methodname: GetThreadInfo
+		methodType: http get
+
+
+		
+		2. Get Comments By ThreadID
+
+		input: ThreadID
+		output: Thread Array(ThreadID, ThreadName, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID)
+		methodname: GetCommentsByThreadID
+		methodType: http get
+
+
+		
+	
+	
+	
+现有问题：
+1, 黄页，中介发布信息跟个人发布信息有区别吗
+2, ItemSoldNumber

@@ -4,20 +4,20 @@ Member:  MemberID, FirstName, LastName, School, Major, HouseNo, Street, City, Pr
 
 
 Forum:
-Thread: ThreadID, ThreadName, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID£¬ ParentID
+Thread: ThreadID, ThreadName, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID£¬ ParentID, LastCommentDate
 
 LikeList: AccountName, ThreadID
 
 
 
 YellowPage:
-Ad: AdType, ID, Title, Content, PostDate, UpdateDate, ServiceRegion, Type, Address, DeliverPrice, Longtitude, Latitude, MemberID, Image
+Advertisement: AdType, AdID, Title, Content, PostDate, UpdateDate, ServiceRegion, Address, DeliverPrice, Longtitude, Latitude, MemberID, Image
 
 	
 	
-	Item: ItemID, ResID, ItemName, ItemImage, ItemPrice, ItemType
+	Item: ItemID, AdID, ItemName, ItemImage, ItemPrice, ItemType
 	
-	Order: OrderID, MemberID, OrderDate, Status, totalPrice
+	Order: OrderID, MemberID, OrderDate, Status, TotalPrice, Des
 	
 	OrderLine: ItemID, Quantity, OrderID, ItemName, ItemImage, ItemPrice, ItemSoldNumber
 	
