@@ -28,7 +28,7 @@ Front:
 		input: none
 		output: Ad Array(AdID, Title, Content, ServiceRegion, Address, DeliverPrice, Longtitude, Latitude, MemberID, Image)
 		methodname: GetRestInfo
-		methodType: http get
+		methodType: http post
 
 
 		Menu:
@@ -49,7 +49,7 @@ Front:
 		methodType: http get
 
 
-		Ad Detail Interface:
+		Ad Detail Interface: ÕûºÏ
 		1. Get Ad Detail Info by AdID
 
 		input: AdID
@@ -76,7 +76,7 @@ Front:
 		input: ThreadID
 		output: Thread (ThreadName, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID)
 		methodname: GetThreadInfo
-		methodType: http get
+		methodType: http post
 
 
 		
@@ -85,7 +85,7 @@ Front:
 		input: ThreadID
 		output: Thread Array(ThreadID, ThreadName, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID)
 		methodname: GetCommentsByThreadID
-		methodType: http get
+		methodType: http post
 
 
 		

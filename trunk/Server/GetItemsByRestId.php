@@ -43,7 +43,7 @@ $arr_all = array(
   'data' => $arr_items,
 );
 
-$output = json_encode($arr_items);
+$output = json_encode($arr_all);
 
 print_r($output);
 
