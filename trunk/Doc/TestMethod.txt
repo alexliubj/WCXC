@@ -4,6 +4,8 @@ put json int textbox of this page, then validate
 
 http://54.213.167.5/getItemByRestId.php?restid=1
 
+
+
 [
     {
         "ItemID": "1",
@@ -22,3 +24,7 @@ http://54.213.167.5/getItemByRestId.php?restid=1
         "ItemType": "1"
     }
 ]
+
+
+http://54.213.167.5/getAdInfoByAdType.php?adType=%22business%22
+{"result":"succ","data":[{"AdID":"1","Title":"Ad1","Content":"Content Of Ad1","MemberID":"1","PostDate":"2013-06-15","UpdateDate":"2013-06-17","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","AccountName":"Neobility","Email":"neo.wu2@gmail.com","Phone":"647 - 899 - 0689","Role":"0"}]}

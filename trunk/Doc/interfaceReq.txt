@@ -27,8 +27,8 @@ Front:
 		#1. Get All Ad info by AdType
 
 		input: AdType
-		output: Ad Array(AdType, AdID, Title, Content, MemberID, accountId,AccountName,adPostDate,Longtitude, Latitude)
-		methodname: GetAllAdInfoByAdType
+		output: Ad Array(AdID, Title, Content, MemberID, PostDate, UpdateDate, ServiceRegion, Address, Longitude, Latitude, AccountName, Email, Phone, Role)
+		methodname: GetAdInfoByAdType
 		methodType: http get
 
 
@@ -36,7 +36,7 @@ Front:
 		#1. Get All rest Info 
 
 		input: none
-		output: Ad Array(AdID, Title, Content, ServiceRegion, Address, DeliverPrice, Longtitude, Latitude, MemberID, Image)
+		output: Ad Array(AdID, Title, Content, ServiceRegion, Address, DeliverPrice, Longitude, Latitude, MemberID, Image)
 		methodname: GetRestInfo
 		methodType: http get
 
@@ -56,15 +56,6 @@ Front:
 		input: Order(MemberID, OrderDate, TotalPrice, Des), OrderLine Array(ItemID, Quantity, ItemName, ItemImage, ItemPrice)
 		output: int
 		methodname: CreateOrder
-		methodType: http get
-
-
-		XXX-Ad Detail Interface: ÕûºÏ
-		1. Get Ad Detail Info by AdID
-
-		input: AdID
-		output: Ad(Title, Content, PostDate, UpdateDate, ServiceRegion, Address, Longtitude, Latitude, MemberID), Member Array(AccountName, Email, Phone, Role)
-		methodname: GetAdDetailInfoByAdID
 		methodType: http get
 	
 	
