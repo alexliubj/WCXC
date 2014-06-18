@@ -20,12 +20,12 @@ $sql = "INSERT INTO AtcComment
 VALUES ('$commentContent', '$memberID', '$articleID', '$postDate');";
 //$start = ($page - 1) * $limit;
 
-mysql_query($sql);
+$update = mysql_query($sql);
 
 $arr_all = array(
   'result' => "succ",
 );
 
-printf("Last inserted record has id %d\n", mysql_insert_id());
+$output = json_encode($arr_all);
 
 ?>

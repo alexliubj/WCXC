@@ -19,14 +19,14 @@ Advertisement: AdType, AdID, Title, Content, PostDate, UpdateDate, ServiceRegion
 	
 	Order: OrderID, MemberID, OrderDate, Status, TotalPrice, Des
 	
-	OrderLine: ItemID, Quantity, OrderID, ItemName, ItemImage, ItemPrice, ItemSoldNumber
+	OrderLine: ItemID, Quantity, OrderID, ItemName, ItemImage, ItemPrice
 	
 	RestComment: CommentID, AdID, MemberID, Rating, Date, CommentContent
 
 
 
 Magazine:
-Article: ArticleID, ArticleLargeImage, ArticleSmallImage, ArticleTitle, ArticleContent, ArticleIssue, ImagePosition, DisplayStyle
+Article: ArticleID, ArticleLargeImage, ArticleSmallImage, ArticleTitle, ArticleContent, ArticleIssue, ImagePosition, DisplayStyle， Author, ArticleDate
 
 AtcComment: CommentID, CommentContent, MemberID, ArticleID, PostDate, UpdateDate
 
@@ -42,9 +42,7 @@ Calender: Date, EventName, EventDes
 现有问题： 
 3，CARD需要再想想
 
-4,ItemSoldNumber 持续累加还是定期重置
-5,CardBarcode是什么TYPE
-6,Article issue, postion, styple怎么定义
+6,Article issue, postion, styple，typeID
 
 待RESEARCH：
 

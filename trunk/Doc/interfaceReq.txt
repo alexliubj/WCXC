@@ -4,14 +4,14 @@ Front:
 		1. Login
 
 		input: Email/Phone, Password
-		output: LoginRet (MemberID, Role)
+		output: Member(MemberID, FirstName, LastName, School, Major, HouseNo, Street, City, Province, PostalCode, Image, AccountName, Password, Status, Email, Phone, LastLoginDate, Role)
 		methodname: MemberLogin
 		methodType: http get
 
 	MemberCard:
 	#getMagzineByid(magdId)
 	input magid,
-	output:preId,nextId,array(articleid, details,imageType,imagePosition,title,articleDate,author/from)
+	output:array(articleid, ArticleTitle, ArticleContent ,ArticleLargeImage, ArticleSmallImage, imagePosition,ArticleDate, Author, ArticleIssue, DisplayStyle)
 
 	#getCommentsByArticleId(ArticleID)
 	input ArticleID
@@ -65,7 +65,7 @@ Front:
 
 		1. Get Thread List
 
-		input: none
+		input: pageNumber, numberOfThread
 		output: Thread Array(ThreadID, ThreadName, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID, LastCommentDate)
 		methodname: GetThreadList
 		methodType: http get
@@ -89,7 +89,14 @@ Front:
 		methodType: http post
 
 
-		
+
+Register, updateMemberInfo, 
+
+postAdInfo, deleteAdInfo, updateAdInfo, 
+
+postThread, getMemberInfoByMemberID, get20RadomThread,  postThread, Like(userID, threadID, 0/1)
+
+getCardByMemberID, uploadCard
 	
 	
 	
