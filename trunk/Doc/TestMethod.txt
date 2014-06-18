@@ -28,3 +28,13 @@ http://54.213.167.5/getItemByRestId.php?restid=1
 
 http://54.213.167.5/getAdInfoByAdType.php?adType=%22business%22
 {"result":"succ","data":[{"AdID":"1","Title":"Ad1","Content":"Content Of Ad1","MemberID":"1","PostDate":"2013-06-15","UpdateDate":"2013-06-17","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","AccountName":"Neobility","Email":"neo.wu2@gmail.com","Phone":"647 - 899 - 0689","Role":"0"}]}
+
+
+http://54.213.167.5/getCommentsByArticleID.php?articleID=1
+{"result":"succ","data":[{"CommentID":"1","CommentContent":"Content","MemberID":"1","PostDate":"2014-06-16","UpdateDate":"2014-06-17"}]}
+
+http://54.213.167.5/GetRestInfo.php
+{"result":"succ","data":[{"AdID":"2","Title":"Old house","Content":"Chinese Food","MemberID":"1","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","DeliverPrice":"100","Image":"..\/image"}]}
+
+http://54.213.167.5/postCommentToArticle.php?articleID=1&memberID=1&commentContent=content
+Last inserted record has id 4

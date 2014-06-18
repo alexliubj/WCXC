@@ -1,8 +1,8 @@
 <?php
 
 $user_input = empty($_POST)?$_GET:$_POST;
-$table = 'Item';
-$restId = $user_input['restid'];
+//$table = 'Advertisement';
+$articleID = $user_input['articleID'];
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -11,16 +11,16 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
-$sql = "select * from Item where restid=".$restId;
-echo $sql;
+$sql = "select * from AtcComment where ArticleID=".$articleID;
+
 $start = ($page - 1) * $limit;
 $result = mysql_query($sql);
 $rst = array(
-        ItemID=> '',
-        ItemName=> '',
-        ItemImage=> '',
-        ItemPrice=> '',
-        ItemType=> '',
+        CommentID=> '',
+        CommentContent=> '',
+        MemberID=> '',
+        PostDate=> '',
+        UpdateDate=> '',
 );
 
 //output all query
@@ -28,11 +28,11 @@ $arr_items = array();
 $i = 0;
 while ($row = mysql_fetch_array($result)) {
   $i++;
-  $rst['ItemID'] = $row['ItemID'];
-  $rst['ItemName'] = $row['CateImg'];
-  $rst['ItemImage'] = $row['ItemImage'];
-  $rst['ItemPrice'] = $row['ItemPrice'];
-  $rst['ItemType'] = $row['ItemType'];
+  $rst['CommentID'] = $row['CommentID'];
+  $rst['CommentContent'] = $row['CommentContent'];
+  $rst['MemberID'] = $row['MemberID'];
+  $rst['PostDate'] = $row['PostDate'];
+  $rst['UpdateDate'] = $row['UpdateDate'];
  array_push($arr_items, $rst);
 }
 
