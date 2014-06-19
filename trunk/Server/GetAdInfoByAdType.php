@@ -54,10 +54,20 @@ while ($row = mysql_fetch_array($result)) {
  array_push($arr_items, $rst);
 }
 
+if($result)
+{
 $arr_all = array(
   'result' => "succ",
   'data' => $arr_items,
 );
+}
+else
+{
+$arr_all = array(
+  'result' => "fail",
+  'data' => $arr_items,
+);
+}
 
 $output = json_encode($arr_all);
 

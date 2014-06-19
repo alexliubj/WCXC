@@ -9,22 +9,22 @@ Front:
 		methodType: http get
 
 	MemberCard:
-	#getMagzineByid(magdId)
-	input magid,
-	output:array(articleid, ArticleTitle, ArticleContent ,ArticleLargeImage, ArticleSmallImage, imagePosition,ArticleDate, Author, ArticleIssue, DisplayStyle)
+	//#getArticleByArticleID(articleID)
+	input articleID,
+	output:array(ArticleTitle, ArticleContent ,ArticleLargeImage, ArticleSmallImage, imagePosition, ArticleDate, Author, ArticleIssue, DisplayStyle)
 
-	#getCommentsByArticleId(ArticleID)
+	//#getCommentsByArticleId(ArticleID)
 	input ArticleID
 	output: array(CommentID, CommentContent, MemberID, PostDate, UpdateDate)
 
-	#postCommentToArticle
+	//#postCommentToArticle
 	input: ArticleID,MemberID,CommentContent
 
 	YellowPage:
 
 		Ad Summary
 
-		#1. Get All Ad info by AdType
+		//#1. Get Ad info by AdType
 
 		input: AdType
 		output: Ad Array(AdID, Title, Content, MemberID, PostDate, UpdateDate, ServiceRegion, Address, Longitude, Latitude, AccountName, Email, Phone, Role)
@@ -33,7 +33,7 @@ Front:
 
 
 		Rest Summary:
-		#1. Get All rest Info 
+		//#1. Get All rest Info 
 
 		input: none
 		output: Ad Array(AdID, Title, Content, ServiceRegion, Address, DeliverPrice, Longitude, Latitude, MemberID, Image)
@@ -42,7 +42,7 @@ Front:
 
 
 		Menu:
-		#1. Get All items by RestID 
+		//#1. Get All items by RestID 
 
 		input: AdID
 		output: item Array (ItemID,ItemName,ItemImage,ItemPrice,ItemType)
@@ -63,38 +63,79 @@ Front:
 	
 		Thread Summary:
 
-		1. Get Thread List
+		//1. Get Thread List
 
 		input: pageNumber, numberOfThread
-		output: Thread Array(ThreadID, ThreadName, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID, LastCommentDate)
+		output: Thread Array(ThreadID, ThreadTitle, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID, LastCommentDate)
 		methodname: GetThreadList
 		methodType: http get
 
 
 		Thread Detail:
-		1. Get Thread Info
+		//1. Get Thread Info
 
 		input: ThreadID
-		output: Thread (ThreadName, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID)
+		output: Thread (ThreadTitle, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID)
 		methodname: GetThreadInfo
 		methodType: http post
 
 
 		
-		2. Get Comments By ThreadID
+		//2. Get Comments By ThreadID
 
 		input: ThreadID
-		output: Thread Array(ThreadID, ThreadName, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID)
+		output: Thread Array(ThreadID, ThreadTitle, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID)
 		methodname: GetCommentsByThreadID
 		methodType: http post
 
 
+//#updateMemberInfo
+input: Member Array(MemberID, FirstName, LastName, School, Major, HouseNo, Street, City, Province, PostalCode, Image, AccountName, Password, Status, Email, Phone, LastLoginDate, Role)
+output: none
+methodname: updateMemberInfo
+methodType: http post
 
-Register, updateMemberInfo, 
+//#postAdInfo
+input: Ad Array(AdType, Title, Content, ServiceRegion, Address, Longitude, Latitude, MemberID, Image)
+output: none
+methodname: postAdInfo
+methodType: http post
 
-postAdInfo, deleteAdInfo, updateAdInfo, 
+//#deleteAdInfo
+input: AdID
+output: none
+methodname: deleteAdInfo
+methodType: http post
 
-postThread, getMemberInfoByMemberID, get20RadomThread,  postThread, Like(userID, threadID, 0/1)
+//#updateAdInfo
+input: Ad Array(AdID, Title, Content, ServiceRegion, Address, Longitude, Latitude, Image)
+output: none
+methodname: updateAdInfo
+methodType: http post
+
+//#postThread
+input: Thread Array(ThreadTitle, ThreadContent, ThreadImages, ThreadType, MemberID)
+output: none
+methodname: postThread
+methodType: http post
+
+//#getMemberInfoByMemberID
+input: MemberID
+output: Member Array(MemberID, FirstName, LastName, School, Major, HouseNo, Street, City, Province, PostalCode, Image, AccountName, Password, Status, Email, Phone, LastLoginDate, Role)
+methodname: getMemberInfoByMemberID
+methodType: http post
+
+
+
+
+
+
+
+
+
+Register
+ 
+get20RadomThread, postThreadComment, Like(userID, threadID, 0/1)
 
 getCardByMemberID, uploadCard
 	
@@ -103,3 +144,4 @@ getCardByMemberID, uploadCard
 现有问题：
 1, 黄页，中介发布信息跟个人发布信息有区别吗
 2, ItemSoldNumber
+delete adInfo, 控制权限，在哪个层面

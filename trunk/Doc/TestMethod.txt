@@ -26,7 +26,7 @@ http://54.213.167.5/getItemByRestId.php?restid=1
 ]
 
 
-http://54.213.167.5/getAdInfoByAdType.php?adType=%22business%22
+http://54.213.167.5/getAdInfoByAdType.php?adType=0
 {"result":"succ","data":[{"AdID":"1","Title":"Ad1","Content":"Content Of Ad1","MemberID":"1","PostDate":"2013-06-15","UpdateDate":"2013-06-17","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","AccountName":"Neobility","Email":"neo.wu2@gmail.com","Phone":"647 - 899 - 0689","Role":"0"}]}
 
 
@@ -37,4 +37,36 @@ http://54.213.167.5/GetRestInfo.php
 {"result":"succ","data":[{"AdID":"2","Title":"Old house","Content":"Chinese Food","MemberID":"1","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","DeliverPrice":"100","Image":"..\/image"}]}
 
 http://54.213.167.5/postCommentToArticle.php?articleID=1&memberID=1&commentContent=content
-Last inserted record has id 4
+{"result":"succ"}
+
+
+http://54.213.167.5/getArticleByArticleID.php?articleID=1
+{"result":"succ","data":[{"ArticleTitle":"Title","ArticleContent":"Content","ArticleLargeImage":"largeImage","ArticleSmallImage":"SmallImage","imagePosition":null,"ArticleDate":null,"Author":null,"ArticleIssue":"0","DisplayStyle":"1"}]}
+
+
+http://54.213.167.5/getThreadList.php?page=1&limit=10
+{"result":"succ","data":[{"ThreadID":"1","ThreadTitle":"first Thread","ThreadPostDate":"2014-06-18 00:00:00","ThreadUpdateDate":"2014-06-19 00:00:00","ThreadContent":"content","ThreadImages":"image","ThreadType":"0","MemberID":"1","LastCommentDate":"2014-06-18 00:00:00"},{"ThreadID":"2","ThreadTitle":"second Thread","ThreadPostDate":"2014-06-18 00:00:00","ThreadUpdateDate":"2014-06-18 00:00:00","ThreadContent":"content","ThreadImages":"image","ThreadType":"0","MemberID":"1","LastCommentDate":"2014-06-18 00:00:00"}]}
+
+http://54.213.167.5/getThreadInfo.php?threadID=1
+{"result":"succ","data":[{"ThreadTitle":"first Thread","ThreadPostDate":"2014-06-18 00:00:00","ThreadUpdateDate":"2014-06-19 00:00:00","ThreadContent":"content","ThreadImages":"image","ThreadType":"0","MemberID":"1"}]}
+
+http://54.213.167.5/getCommentsByThreadID.php?threadID=1
+{"result":"succ","data":[{"ThreadID":"3","ThreadTitle":"first comment for thread 1","ThreadPostDate":"2014-06-18 00:00:00","ThreadUpdateDate":"2014-06-18 00:00:00","ThreadContent":"content","ThreadImages":"image","ThreadType":"0","MemberID":"2"}]}
+
+http://54.213.167.5/updateMemberInfo.php?memberID=2&firstName=firstName&lastName=lastName&school=school&major=major&houseNo=55&street=street&city=city&province=province&postalCode=postalCode&image=image&accountName=accountName&password=password&status=0&email=email&phone=phone&role=0
+{"result":"succ"}
+
+http://54.213.167.5/postAdInfo.php?adType=2&title=title&content=content&serviceRegion=region&address=address&longitude=22.22&latitude=1.3232&memberID=2&image=image
+{"result":"succ"}
+
+http://54.213.167.5/deleteAdInfo.php?adID=4
+{"result":"succ"}
+
+http://54.213.167.5/updateAdInfo.php?title=title&content=content&serviceRegion=serviceRegion&address=address&longitude=22.2&latitude=11.3232&image=image&adID=5
+{"result":"succ"}
+
+http://54.213.167.5/postThread.php?threadTitle=title&threadContent=content&threadImage=image&threadType=0&memberID=2
+{"result":"succ"}
+
+http://54.213.167.5/getMemberInfoByMemberID.php?memberID=1
+{"result":"succ","data":[{"firstName":"Neo","lastName":"Wu","school":"Centennial","major":"","houseNo":"507","street":"4091 Sheppard Ave","city":"Toronto","province":"ON","postalCode":"3h2 5f1","image":"..\/image","accountName":"Neobility","password":"123456","status":"0","email":"neo.wu2@gmail.com","phone":"647 - 899 - 0689","role":"0"}]}

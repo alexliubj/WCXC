@@ -11,16 +11,20 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
-$sql = "select * from AtcComment where ArticleID=".$articleID;
+$sql = "select * from Article where ArticleID=".$articleID;
 
 $start = ($page - 1) * $limit;
 $result = mysql_query($sql);
 $rst = array(
-        CommentID=> '',
-        CommentContent=> '',
-        MemberID=> '',
-        PostDate=> '',
-        UpdateDate=> '',
+        ArticleTitle=> '',
+        ArticleContent=> '',
+        ArticleLargeImage=> '',
+        ArticleSmallImage=> '',
+        imagePosition=> '',
+		ArticleDate=> '',
+		Author=> '',
+		ArticleIssue=> '',
+        DisplayStyle=> '',
 );
 
 //output all query
@@ -28,11 +32,15 @@ $arr_items = array();
 $i = 0;
 while ($row = mysql_fetch_array($result)) {
   $i++;
-  $rst['CommentID'] = $row['CommentID'];
-  $rst['CommentContent'] = $row['CommentContent'];
-  $rst['MemberID'] = $row['MemberID'];
-  $rst['PostDate'] = $row['PostDate'];
-  $rst['UpdateDate'] = $row['UpdateDate'];
+  $rst['ArticleTitle'] = $row['ArticleTitle'];
+  $rst['ArticleContent'] = $row['ArticleContent'];
+  $rst['ArticleLargeImage'] = $row['ArticleLargeImage'];
+  $rst['ArticleSmallImage'] = $row['ArticleSmallImage'];
+  $rst['imagePosition'] = $row['imagePosition'];
+  $rst['ArticleDate'] = $row['ArticleDate'];
+  $rst['Author'] = $row['Author'];
+  $rst['ArticleIssue'] = $row['ArticleIssue'];
+  $rst['DisplayStyle'] = $row['DisplayStyle'];
  array_push($arr_items, $rst);
 }
 

@@ -2,9 +2,15 @@
 
 $user_input = empty($_POST)?$_GET:$_POST;
 //$table = 'Advertisement';
-$articleID = $user_input['articleID'];
+$adType = $user_input['adType'];
+$title = $user_input['title'];
+$content = $user_input['content'];
+$serviceRegion = $user_input['serviceRegion'];
+$address = $user_input['address'];
+$longitude = $user_input['longitude'];
+$latitude = $user_input['latitude'];
 $memberID = $user_input['memberID'];
-$commentContent = $user_input['commentContent'];
+$image = $user_input['image'];
 $postDate = date('Y-m-d H:i:s');
 
 
@@ -15,9 +21,9 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
-$sql = "INSERT INTO AtcComment
-(CommentContent,MemberID,ArticleID,PostDate)
-VALUES ('$commentContent', '$memberID', '$articleID', '$postDate');";
+$sql = "INSERT INTO Advertisement
+(adType,title,content,serviceRegion,address,longitude,latitude,memberID,image,postDate)
+VALUES ('$adType', '$title', '$content', '$serviceRegion', '$address', '$longitude', '$latitude', '$memberID', '$image', '$postDate');";
 //$start = ($page - 1) * $limit;
 
 $result = mysql_query($sql);

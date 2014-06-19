@@ -1,8 +1,8 @@
 <?php
 
 $user_input = empty($_POST)?$_GET:$_POST;
-$table = 'Item';
-$restId = $user_input['restid'];
+//$table = 'Advertisement';
+$threadID = $user_input['threadID'];
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -11,16 +11,18 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
-$sql = "select * from Item where restid=".$restId;
-echo $sql;
+$sql = "select * from Thread where ThreadID=".$threadID." and ParentID=0";
+
 $start = ($page - 1) * $limit;
 $result = mysql_query($sql);
 $rst = array(
-        ItemID=> '',
-        ItemName=> '',
-        ItemImage=> '',
-        ItemPrice=> '',
-        ItemType=> '',
+        ThreadTitle=> '',
+        ThreadPostDate=> '',
+        ThreadUpdateDate=> '',
+        ThreadContent=> '',
+        ThreadImages=> '',
+		ThreadType=> '',
+		MemberID=> '',
 );
 
 //output all query
@@ -28,11 +30,13 @@ $arr_items = array();
 $i = 0;
 while ($row = mysql_fetch_array($result)) {
   $i++;
-  $rst['ItemID'] = $row['ItemID'];
-  $rst['ItemName'] = $row['CateImg'];
-  $rst['ItemImage'] = $row['ItemImage'];
-  $rst['ItemPrice'] = $row['ItemPrice'];
-  $rst['ItemType'] = $row['ItemType'];
+  $rst['ThreadTitle'] = $row['ThreadTitle'];
+  $rst['ThreadPostDate'] = $row['ThreadPostDate'];
+  $rst['ThreadUpdateDate'] = $row['ThreadUpdateDate'];
+  $rst['ThreadContent'] = $row['ThreadContent'];
+  $rst['ThreadImages'] = $row['ThreadImages'];
+  $rst['ThreadType'] = $row['ThreadType'];
+  $rst['MemberID'] = $row['MemberID'];
  array_push($arr_items, $rst);
 }
 

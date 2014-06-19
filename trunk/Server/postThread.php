@@ -2,11 +2,12 @@
 
 $user_input = empty($_POST)?$_GET:$_POST;
 //$table = 'Advertisement';
-$articleID = $user_input['articleID'];
+$threadTitle = $user_input['threadTitle'];
+$threadContent = $user_input['threadContent'];
+$threadImages = $user_input['threadImages'];
+$threadType = $user_input['threadType'];
 $memberID = $user_input['memberID'];
-$commentContent = $user_input['commentContent'];
 $postDate = date('Y-m-d H:i:s');
-
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -15,9 +16,9 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
-$sql = "INSERT INTO AtcComment
-(CommentContent,MemberID,ArticleID,PostDate)
-VALUES ('$commentContent', '$memberID', '$articleID', '$postDate');";
+$sql = "INSERT INTO Thread
+(threadTitle,threadContent,threadImages,threadType,memberID,threadPostDate)
+VALUES ('$threadTitle', '$threadContent', '$threadImages', '$threadType', '$memberID', '$postDate');";
 //$start = ($page - 1) * $limit;
 
 $result = mysql_query($sql);
