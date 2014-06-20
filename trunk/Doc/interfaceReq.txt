@@ -1,7 +1,7 @@
 Front:
 	Login Interface:
 
-		1. Login
+		//1. Login
 
 		input: Email/Phone, Password
 		output: Member(MemberID, FirstName, LastName, School, Major, HouseNo, Street, City, Province, PostalCode, Image, AccountName, Password, Status, Email, Phone, LastLoginDate, Role)
@@ -126,22 +126,57 @@ methodname: getMemberInfoByMemberID
 methodType: http post
 
 
+//#get20RadomThread
+input: none
+output: Thread Array(ThreadID, ThreadTitle, ThreadPostDate, ThreadUpdateDate, ThreadContent, ThreadImages, ThreadType, MemberID, LastCommentDate)
+methodname: get20RandomThread
+methodType: http post
+
+
+//#postThreadComment
+input: Thread Array(ParentID, ThreadTitle, ThreadContent, ThreadImages, MemberID)
+output: none
+methodname: postThreadComment
+methodType: http post
+
+//#likeOrUnlike(memberID, threadID, like)
+input: memberID, threadID, accountName, like
+output: none
+methodname: likeOrUnlike
+methodType: http post
+
+
+//#getLikeList
+input: threadID
+output: Array(memberID,accountName)
+methodname: getLikeList
+methodType: http post
 
 
 
+//#getCardByMemberID
+input: memberID
+output: Card Array(CardID, CardType, CardTitle, CardBarcode, CardNumber, CardDes, FrontViewImage, BackViewImage)
+methodname: getCardByMemberID
+methodType: http post
 
 
+//#uploadCard
+input: Card(CardType, CardTitle, CardBarcode, CardNumber, CardDes, FrontViewImage, BackViewImage, MemberID)
+output: none
+methodname: uploadCard
+methodType: http post
 
 
-Register
- 
-get20RadomThread, postThreadComment, Like(userID, threadID, 0/1)
+//#updateCardInfo
+input: Card(CardID, CardTitle, CardBarcode, CardNumber, CardDes, FrontViewImage, BackViewImage)
+output: none
+methodname: updateCardInfo
+methodType: http post
 
-getCardByMemberID, uploadCard
-	
-	
-	
-现有问题：
-1, 黄页，中介发布信息跟个人发布信息有区别吗
-2, ItemSoldNumber
-delete adInfo, 控制权限，在哪个层面
+
+//#Register
+input: Member(FirstName, LastName, School, Major, HouseNo, Street, City, Province, PostalCode, Image, AccountName, Password, Status, Email, Phone, Role)
+output: none
+methodname: Register
+methodType: http post

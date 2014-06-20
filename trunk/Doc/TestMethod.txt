@@ -65,8 +65,48 @@ http://54.213.167.5/deleteAdInfo.php?adID=4
 http://54.213.167.5/updateAdInfo.php?title=title&content=content&serviceRegion=serviceRegion&address=address&longitude=22.2&latitude=11.3232&image=image&adID=5
 {"result":"succ"}
 
-http://54.213.167.5/postThread.php?threadTitle=title&threadContent=content&threadImage=image&threadType=0&memberID=2
+http://54.213.167.5/postThread.php?threadTitle=title&threadContent=content&threadImages=~/image/123.jpg&threadType=0&memberID=2
 {"result":"succ"}
 
 http://54.213.167.5/getMemberInfoByMemberID.php?memberID=1
 {"result":"succ","data":[{"firstName":"Neo","lastName":"Wu","school":"Centennial","major":"","houseNo":"507","street":"4091 Sheppard Ave","city":"Toronto","province":"ON","postalCode":"3h2 5f1","image":"..\/image","accountName":"Neobility","password":"123456","status":"0","email":"neo.wu2@gmail.com","phone":"647 - 899 - 0689","role":"0"}]}
+
+
+http://54.213.167.5/get20RandomThread.php
+{"result":"succ","data":[{"ThreadID":"8","ThreadTitle":"title","ThreadPostDate":"2014-06-18 23:54:51","ThreadUpdateDate":null,"ThreadContent":"content","ThreadImages":"","ThreadType":"0","MemberID":"2","LastCommentDate":null},{"ThreadID":"6","ThreadTitle":"title","ThreadPostDate":null,"ThreadUpdateDate":null,"ThreadContent":"content","ThreadImages":"","ThreadType":"0","MemberID":"0","LastCommentDate":null},{"ThreadID":"9","ThreadTitle":"title","ThreadPostDate":"2014-06-19 03:02:05","ThreadUpdateDate":null,"ThreadContent":"content","ThreadImages":"","ThreadType":"0","MemberID":"2","LastCommentDate":null},{"ThreadID":"1","ThreadTitle":"first Thread","ThreadPostDate":"2014-06-18 00:00:00","ThreadUpdateDate":"2014-06-19 00:00:00","ThreadContent":"content","ThreadImages":"image","ThreadType":"0","MemberID":"1","LastCommentDate":"2014-06-18 00:00:00"},{"ThreadID":"10","ThreadTitle":"title","ThreadPostDate":"2014-06-19 03:02:25","ThreadUpdateDate":null,"ThreadContent":"content","ThreadImages":"","ThreadType":"0","MemberID":"2","LastCommentDate":null},{"ThreadID":"5","ThreadTitle":"title","ThreadPostDate":null,"ThreadUpdateDate":null,"ThreadContent":"content","ThreadImages":"","ThreadType":"0","MemberID":"2","LastCommentDate":null},{"ThreadID":"2","ThreadTitle":"second Thread","ThreadPostDate":"2014-06-18 00:00:00","ThreadUpdateDate":"2014-06-18 00:00:00","ThreadContent":"content","ThreadImages":"image","ThreadType":"0","MemberID":"1","LastCommentDate":"2014-06-18 00:00:00"},{"ThreadID":"7","ThreadTitle":"title","ThreadPostDate":"2014-06-18 23:54:31","ThreadUpdateDate":null,"ThreadContent":"content","ThreadImages":"","ThreadType":"0","MemberID":"0","LastCommentDate":null},{"ThreadID":"4","ThreadTitle":"title","ThreadPostDate":null,"ThreadUpdateDate":null,"ThreadContent":"content","ThreadImages":"","ThreadType":"0","MemberID":"2","LastCommentDate":null}]}
+
+
+http://54.213.167.5/postThreadComment.php?parentID=2&threadTitle=title&threadContent=content&threadImages=~/image/123.jpg&memberID=2
+{"result":"succ"}
+
+
+http://54.213.167.5/likeOrUnlike.php?memberID=3&threadID=5&accountName=neo&like=1
+{"result":"succ"}
+http://54.213.167.5/likeOrUnlike.php?memberID=3&threadID=5&accountName=neo&like=0
+{"result":"succ"}
+
+
+http://54.213.167.5/getLikeList.php?threadID=2
+{"result":"succ","data":[{"memberID":"3","accountName":"neo"},{"memberID":"3","accountName":"neo"}]}
+
+
+http://54.213.167.5/getCardByMemberID.php?memberID=1
+{"result":"succ","data":[{"CardID":"1","CardType":"0","CardTitle":"title","CardBarcode":"barcode","CardNumber":"cardnumber","CardDes":"des","FrontViewImage":"~\/image\/123.jpg","BackViewImage":"~\/image\/123.jpg"}]}
+
+
+http://54.213.167.5/uploadCard.php?cardType=0&cardTitle=title&cardBarcode=barcode&cardNumber=number&cardDes=Des&frontViewImage=~/image/123.jpg&backViewImage=~/image/123.jpg&memberID=1
+{"result":"succ"}
+
+
+http://54.213.167.5/updateCardInfo.php?cardID=1&cardTitle=titleoooo&cardBarcode=barcode&cardNumber=number&cardDes=Des&frontViewImage=~/image/123.jpg&backViewImage=~/image/123.jpg
+{"result":"succ"}
+
+
+http://54.213.167.5/register.php?firstName=firstName&lastName=lastName&school=school&major=major&houseNo=55&street=street&city=city&province=province&postalCode=postalCode&image=~/image/123.jpg&accountName=accountName&password=password&status=0&email=email&phone=phone&role=0
+{"result":"succ"}
+
+
+http://54.213.167.5/Login.php?email=neo.wu2@gmail.com&password=123456
+{"result":"succ","data":[{"memberID":"1","firstName":"Neo","lastName":"Wu","school":"Centennial","major":"","houseNo":"507","street":"4091 Sheppard Ave","city":"Toronto","province":"ON","postalCode":"3h2 5f1","image":"..\/image","accountName":"Neobility","password":"123456","status":"0","email":"neo.wu2@gmail.com","phone":"647 - 899 - 0689","role":"0"}]}
+http://54.213.167.5/Login.php?phone=6478990689&password=123456
+{"result":"succ","data":[{"memberID":"1","firstName":"Neo","lastName":"Wu","school":"Centennial","major":"","houseNo":"507","street":"4091 Sheppard Ave","city":"Toronto","province":"ON","postalCode":"3h2 5f1","image":"..\/image","accountName":"Neobility","password":"123456","status":"0","email":"neo.wu2@gmail.com","phone":"6478990689","role":"0"}]}
