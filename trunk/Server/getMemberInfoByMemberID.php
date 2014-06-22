@@ -2,6 +2,8 @@
 
 $user_input = empty($_POST)?$_GET:$_POST;
 $memberID = $user_input['memberID'];
+$schema = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
+$url = $schema.$_SERVER["SERVER_NAME"];
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -46,7 +48,7 @@ while ($row = mysql_fetch_array($result)) {
   $rst['city'] = $row['City'];
   $rst['province'] = $row['Province'];
   $rst['postalCode'] = $row['PostalCode'];
-  $rst['image'] = $row['Image'];
+  $rst['image'] = $url.$row['Image'];
   $rst['accountName'] = $row['AccountName'];
   $rst['password'] = $row['Password'];
   $rst['status'] = $row['Status'];

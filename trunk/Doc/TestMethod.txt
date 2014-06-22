@@ -2,28 +2,10 @@ http://jsonlint.com/
 
 put json int textbox of this page, then validate
 
-http://54.213.167.5/getItemByRestId.php?restid=1
 
 
-
-[
-    {
-        "ItemID": "1",
-        "ResID": "1",
-        "ItemName": null,
-        "ItemImage": ",,,,,",
-        "ItemPrice": "2.2",
-        "ItemType": "1"
-    },
-    {
-        "ItemID": "2",
-        "ResID": "1",
-        "ItemName": null,
-        "ItemImage": ",,,,,",
-        "ItemPrice": "2.3",
-        "ItemType": "1"
-    }
-]
+http://54.213.167.5/getItemsByRestID.php?restid=1
+select * from Item where restid=1{"result":"succ","data":[{"ItemID":"1","ItemName":null,"ItemImage":"http:\/\/54.213.167.5\/image\/123.jpg","ItemPrice":"2.2","ItemType":"1"},{"ItemID":"2","ItemName":null,"ItemImage":"http:\/\/54.213.167.5\/image\/123.jpg","ItemPrice":"2.3","ItemType":"1"}]}
 
 
 http://54.213.167.5/getAdInfoByAdType.php?adType=0
@@ -33,7 +15,7 @@ http://54.213.167.5/getAdInfoByAdType.php?adType=0
 http://54.213.167.5/getCommentsByArticleID.php?articleID=1
 {"result":"succ","data":[{"CommentID":"1","CommentContent":"Content","MemberID":"1","PostDate":"2014-06-16","UpdateDate":"2014-06-17"}]}
 
-http://54.213.167.5/GetRestInfo.php
+http://54.213.167.5/getRestInfo.php
 {"result":"succ","data":[{"AdID":"2","Title":"Old house","Content":"Chinese Food","MemberID":"1","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","DeliverPrice":"100","Image":"..\/image"}]}
 
 http://54.213.167.5/postCommentToArticle.php?articleID=1&memberID=1&commentContent=content

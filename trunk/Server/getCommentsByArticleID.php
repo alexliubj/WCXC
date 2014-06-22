@@ -11,7 +11,7 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
-$sql = "select * from AtcComment where ArticleID=".$articleID;
+$sql = "select * from AtcComment a join Member m on a.MemberID = m.MemberID where ArticleID=".$articleID;
 
 $start = ($page - 1) * $limit;
 $result = mysql_query($sql);
@@ -21,6 +21,7 @@ $rst = array(
         MemberID=> '',
         PostDate=> '',
         UpdateDate=> '',
+        AccountName=>'',
 );
 
 //output all query
@@ -33,6 +34,7 @@ while ($row = mysql_fetch_array($result)) {
   $rst['MemberID'] = $row['MemberID'];
   $rst['PostDate'] = $row['PostDate'];
   $rst['UpdateDate'] = $row['UpdateDate'];
+  $rst['AccountName'] = $row['AccountName'];
  array_push($arr_items, $rst);
 }
 

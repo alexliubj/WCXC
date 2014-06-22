@@ -34,6 +34,9 @@ $rst = array(
 //output all query
 $arr_items = array();
 $i = 0;
+$schema = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
+$url = $schema.$_SERVER["SERVER_NAME"];
+
 while ($row = mysql_fetch_array($result)) {
   $i++;
   $rst['ThreadID'] = $row['ThreadID'];
@@ -41,7 +44,7 @@ while ($row = mysql_fetch_array($result)) {
   $rst['ThreadPostDate'] = $row['ThreadPostDate'];
   $rst['ThreadUpdateDate'] = $row['ThreadUpdateDate'];
   $rst['ThreadContent'] = $row['ThreadContent'];
-  $rst['ThreadImages'] = $row['ThreadImages'];
+  $rst['ThreadImages'] = $url.$row['ThreadImages'];
   $rst['ThreadType'] = $row['ThreadType'];
   $rst['MemberID'] = $row['MemberID'];
   $rst['LastCommentDate'] = $row['LastCommentDate'];

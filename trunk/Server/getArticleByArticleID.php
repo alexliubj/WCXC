@@ -3,6 +3,8 @@
 $user_input = empty($_POST)?$_GET:$_POST;
 //$table = 'Advertisement';
 $articleID = $user_input['articleID'];
+$schema = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
+$url = $schema.$_SERVER["SERVER_NAME"];
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -34,8 +36,8 @@ while ($row = mysql_fetch_array($result)) {
   $i++;
   $rst['ArticleTitle'] = $row['ArticleTitle'];
   $rst['ArticleContent'] = $row['ArticleContent'];
-  $rst['ArticleLargeImage'] = $row['ArticleLargeImage'];
-  $rst['ArticleSmallImage'] = $row['ArticleSmallImage'];
+  $rst['ArticleLargeImage'] = $url.$row['ArticleLargeImage'];
+  $rst['ArticleSmallImage'] = $url.$row['ArticleSmallImage'];
   $rst['imagePosition'] = $row['imagePosition'];
   $rst['ArticleDate'] = $row['ArticleDate'];
   $rst['Author'] = $row['Author'];

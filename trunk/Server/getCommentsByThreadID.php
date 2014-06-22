@@ -3,6 +3,8 @@
 $user_input = empty($_POST)?$_GET:$_POST;
 //$table = 'Advertisement';
 $threadID = $user_input['threadID'];
+$schema = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
+$url = $schema.$_SERVER["SERVER_NAME"];
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -11,7 +13,7 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
-$sql = "select * from Thread where ParentID=".$threadID;
+$sql = "select * from Thread t join Member m on t.MemberID = m.MemberID where ParentID=".$threadID;
 
 $start = ($page - 1) * $limit;
 $result = mysql_query($sql);
@@ -24,6 +26,7 @@ $rst = array(
         ThreadImages=> '',
 		ThreadType=> '',
 		MemberID=> '',
+		AccountName=> '',
 );
 
 //output all query
@@ -36,9 +39,10 @@ while ($row = mysql_fetch_array($result)) {
   $rst['ThreadPostDate'] = $row['ThreadPostDate'];
   $rst['ThreadUpdateDate'] = $row['ThreadUpdateDate'];
   $rst['ThreadContent'] = $row['ThreadContent'];
-  $rst['ThreadImages'] = $row['ThreadImages'];
+  $rst['ThreadImages'] = $url.$row['ThreadImages'];
   $rst['ThreadType'] = $row['ThreadType'];
   $rst['MemberID'] = $row['MemberID'];
+  $rst['AccountName'] = $row['AccountName'];
  array_push($arr_items, $rst);
 }
 

@@ -3,6 +3,8 @@
 $user_input = empty($_POST)?$_GET:$_POST;
 //$table = 'Advertisement';
 $memberID = $user_input['memberID'];
+$schema = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
+$url = $schema.$_SERVER["SERVER_NAME"];
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -37,8 +39,8 @@ while ($row = mysql_fetch_array($result)) {
   $rst['CardBarcode'] = $row['CardBarcode'];
   $rst['CardNumber'] = $row['CardNumber'];
   $rst['CardDes'] = $row['CardDes'];
-  $rst['FrontViewImage'] = $row['FrontViewImage'];
-  $rst['BackViewImage'] = $row['BackViewImage'];
+  $rst['FrontViewImage'] = $url.$row['FrontViewImage'];
+  $rst['BackViewImage'] = $url.$row['BackViewImage'];
  array_push($arr_items, $rst);
 }
 

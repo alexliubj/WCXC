@@ -3,6 +3,8 @@
 $user_input = empty($_POST)?$_GET:$_POST;
 $table = 'Item';
 $restId = $user_input['restid'];
+$schema = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
+$url = $schema.$_SERVER["SERVER_NAME"];
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -30,7 +32,7 @@ while ($row = mysql_fetch_array($result)) {
   $i++;
   $rst['ItemID'] = $row['ItemID'];
   $rst['ItemName'] = $row['CateImg'];
-  $rst['ItemImage'] = $row['ItemImage'];
+  $rst['ItemImage'] = $url.$row['ItemImage'];
   $rst['ItemPrice'] = $row['ItemPrice'];
   $rst['ItemType'] = $row['ItemType'];
  array_push($arr_items, $rst);

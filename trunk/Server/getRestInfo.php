@@ -3,6 +3,8 @@
 $user_input = empty($_POST)?$_GET:$_POST;
 //$table = 'Advertisement';
 //$adType = 'Restaurant';
+$schema = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
+$url = $schema.$_SERVER["SERVER_NAME"];
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -42,7 +44,7 @@ while ($row = mysql_fetch_array($result)) {
   $rst['Longitude'] = $row['Longitude'];
   $rst['Latitude'] = $row['Latitude'];
   $rst['DeliverPrice'] = $row['DeliverPrice'];
-  $rst['Image'] = $row['Image'];
+  $rst['Image'] = $url.$row['Image'];
  array_push($arr_items, $rst);
 }
 
