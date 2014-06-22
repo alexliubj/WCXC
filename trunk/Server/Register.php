@@ -11,13 +11,17 @@ $street = $user_input['street'];
 $city = $user_input['city'];
 $province = $user_input['province'];
 $postalCode = $user_input['postalCode'];
-$image = $user_input['image'];
 $accountName = $user_input['accountName'];
 $password = $user_input['password'];
 $status = $user_input['status'];
 $email = $user_input['email'];
 $phone = $user_input['phone'];
 $role = $user_input['role'];
+
+$image = "image/";
+$FileID=date("Ymd-His") . '-' . rand(100,999);
+$image = $image . $FileID.basename( $_FILES['uploaded']['name']) ;
+
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -26,12 +30,14 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
-$sql = "INSERT INTO Member
-(firstName,lastName,school,major,houseNo,street,city,province,postalCode,image,accountName,password,status,email,phone,role)
-VALUES ('$firstName', '$lastName', '$school', '$major', '$houseNo', '$street', '$city', '$province', '$postalCode', '$image', '$accountName', '$password', '$status', '$email', '$phone', '$role');";
-//$start = ($page - 1) * $limit;
 
-$result = mysql_query($sql);
+if(move_uploaded_file($_FILES['uploaded']['tmp_name'], $image))
+{
+		$sql = "INSERT INTO Member
+		(firstName,lastName,school,major,houseNo,street,city,province,postalCode,image,accountName,password,status,email,phone,role)
+VALUES ('$firstName', '$lastName', '$school', '$major', '$houseNo', '$street', '$city', '$province', '$postalCode', '$image', '$accountName', '$password', '$status', '$email', '$phone', '$role');";
+		$result = mysql_query($sql);
+
 
 if($result)
 {
@@ -46,7 +52,17 @@ $arr_all = array(
 );
 }
 
+}
+else {
+  $arr_all = array(
+  'result' => "fail",
+}
+
+
 $output = json_encode($arr_all);
 print_r($output);
+
+
+
 
 ?>
