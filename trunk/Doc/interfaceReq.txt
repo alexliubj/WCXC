@@ -9,12 +9,10 @@ Front:
 		methodType: http get
 
 	MemberCard:
-	//#getArticleByArticleID(articleID)
-	input articleID,
-	output:array(ArticleTitle, ArticleContent ,ArticleLargeImage, ArticleSmallImage, imagePosition, ArticleDate, Author, ArticleIssue, DisplayStyle)
+	
 
-	//#getCommentsByArticleId(ArticleID)
-	input ArticleID
+	//#getCommentsByArticleId(articleID)
+	input articleID
 	output: array(CommentID, CommentContent, MemberID, PostDate, UpdateDate)
 
 	//#postCommentToArticle
@@ -180,3 +178,19 @@ input: Member(FirstName, LastName, School, Major, HouseNo, Street, City, Provinc
 output: none
 methodname: Register
 methodType: http post
+
+
+//#deleteCardByCardID
+input: CardID
+output: none
+methodname: deleteCardByCardID
+methodType: http post
+
+
+
+//#getArticleByArticleIssue(ArticleIssue)
+input ArticleIssue
+output:array(ArticleID, ArticleTitle, ArticleContent ,ArticleLargeImage, ArticleSmallImage, imagePosition, ArticleDate, Author, DisplayStyle)
+
+
+updateMemberImage

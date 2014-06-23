@@ -5,7 +5,7 @@ $user_input = empty($_POST)?$_GET:$_POST;
 $parentID = $user_input['parentID'];
 $threadTitle = $user_input['threadTitle'];
 $threadContent = $user_input['threadContent'];
-$threadImages = $user_input['threadImages'];
+$threadType = $user_input['threadType'];
 $memberID = $user_input['memberID'];
 $postDate = date('Y-m-d H:i:s');
 
@@ -16,9 +16,10 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
+
 $sql = "INSERT INTO Thread
-(parentID,threadTitle,threadContent,threadImages,threadType,memberID,threadPostDate)
-VALUES ('$parentID', '$threadTitle', '$threadContent', '$threadImages', '$threadType', '$memberID', '$postDate');";
+(parentID,threadTitle,threadContent,threadType,memberID,threadPostDate)
+VALUES ('$parentID', '$threadTitle', '$threadContent', '$threadType', '$memberID', '$postDate');";
 //$start = ($page - 1) * $limit;
 
 $result = mysql_query($sql);
@@ -35,6 +36,7 @@ $arr_all = array(
   'result' => "fail",
 );
 }
+
 
 $output = json_encode($arr_all);
 print_r($output);

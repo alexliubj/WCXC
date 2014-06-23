@@ -13,7 +13,7 @@ mysql_connect("localhost", "root", "wechao") or
 mysql_select_db("WeChao");
 
 $sql = "select * from Member where memberID=".$memberID;
-echo $sql;
+
 $start = ($page - 1) * $limit;
 $result = mysql_query($sql);
 $rst = array(

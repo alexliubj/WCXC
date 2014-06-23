@@ -35,7 +35,7 @@ http://54.213.167.5/getThreadInfo.php?threadID=1
 http://54.213.167.5/getCommentsByThreadID.php?threadID=1
 {"result":"succ","data":[{"ThreadID":"3","ThreadTitle":"first comment for thread 1","ThreadPostDate":"2014-06-18 00:00:00","ThreadUpdateDate":"2014-06-18 00:00:00","ThreadContent":"content","ThreadImages":"image","ThreadType":"0","MemberID":"2"}]}
 
-http://54.213.167.5/updateMemberInfo.php?memberID=2&firstName=firstName&lastName=lastName&school=school&major=major&houseNo=55&street=street&city=city&province=province&postalCode=postalCode&image=image&accountName=accountName&password=password&status=0&email=email&phone=phone&role=0
+http://54.213.167.5/updateMemberInfo.php?memberID=2&firstName=firstName&lastName=lastName&school=school&major=major&houseNo=55&street=street&city=city&province=province&postalCode=postalCode&accountName=accountName&password=password&status=0&email=email&phone=phone&role=0
 {"result":"succ"}
 
 http://54.213.167.5/postAdInfo.php?adType=2&title=title&content=content&serviceRegion=region&address=address&longitude=22.22&latitude=1.3232&memberID=2&image=image
@@ -47,7 +47,7 @@ http://54.213.167.5/deleteAdInfo.php?adID=4
 http://54.213.167.5/updateAdInfo.php?title=title&content=content&serviceRegion=serviceRegion&address=address&longitude=22.2&latitude=11.3232&image=image&adID=5
 {"result":"succ"}
 
-http://54.213.167.5/postThread.php?threadTitle=title&threadContent=content&threadImages=~/image/123.jpg&threadType=0&memberID=2
+http://54.213.167.5/postThread.php?threadTitle=title&threadContent=content&threadImages=/image/123.jpg&threadType=0&memberID=2
 {"result":"succ"}
 
 http://54.213.167.5/getMemberInfoByMemberID.php?memberID=1
@@ -76,14 +76,14 @@ http://54.213.167.5/getCardByMemberID.php?memberID=1
 {"result":"succ","data":[{"CardID":"1","CardType":"0","CardTitle":"title","CardBarcode":"barcode","CardNumber":"cardnumber","CardDes":"des","FrontViewImage":"~\/image\/123.jpg","BackViewImage":"~\/image\/123.jpg"}]}
 
 
-http://54.213.167.5/uploadCard.php?cardType=0&cardTitle=title&cardBarcode=barcode&cardNumber=number&cardDes=Des&frontViewImage=~/image/123.jpg&backViewImage=~/image/123.jpg&memberID=1
+http://54.213.167.5/uploadCard.php?cardType=0&cardTitle=title&cardBarcode=barcode&cardNumber=number&cardDes=Des&memberID=1
 {"result":"succ"}
 
 
 http://54.213.167.5/updateCardInfo.php?cardID=1&cardTitle=titleoooo&cardBarcode=barcode&cardNumber=number&cardDes=Des&frontViewImage=~/image/123.jpg&backViewImage=~/image/123.jpg
 {"result":"succ"}
 
-
+http://54.213.167.5/register.php?school=school&major=major&accountName=accountName&password=passwordemail=email&phone=phone
 http://54.213.167.5/register.php?firstName=firstName&lastName=lastName&school=school&major=major&houseNo=55&street=street&city=city&province=province&postalCode=postalCode&image=~/image/123.jpg&accountName=accountName&password=password&status=0&email=email&phone=phone&role=0
 {"result":"succ"}
 
@@ -92,3 +92,11 @@ http://54.213.167.5/Login.php?email=neo.wu2@gmail.com&password=123456
 {"result":"succ","data":[{"memberID":"1","firstName":"Neo","lastName":"Wu","school":"Centennial","major":"","houseNo":"507","street":"4091 Sheppard Ave","city":"Toronto","province":"ON","postalCode":"3h2 5f1","image":"..\/image","accountName":"Neobility","password":"123456","status":"0","email":"neo.wu2@gmail.com","phone":"647 - 899 - 0689","role":"0"}]}
 http://54.213.167.5/Login.php?phone=6478990689&password=123456
 {"result":"succ","data":[{"memberID":"1","firstName":"Neo","lastName":"Wu","school":"Centennial","major":"","houseNo":"507","street":"4091 Sheppard Ave","city":"Toronto","province":"ON","postalCode":"3h2 5f1","image":"..\/image","accountName":"Neobility","password":"123456","status":"0","email":"neo.wu2@gmail.com","phone":"6478990689","role":"0"}]}
+
+
+http://54.213.167.5/deleteCardByCardID.php?cardID=3
+{"result":"succ"}
+
+
+http://54.213.167.5/getArticleByArticleIssue.php?articleIssue=0
+{"result":"succ","data":[{"ArticleID":"1","ArticleTitle":"Title","ArticleContent":"something that is to be expressed through some medium, as speech, writing, or any of various arts: a poetic form adequate to a poetic content.","ArticleLargeImage":"http:\/\/54.213.167.5\/image\/largeImage.jpg","ArticleSmallImage":"http:\/\/54.213.167.5\/image\/smallImage.jpg","imagePosition":null,"ArticleDate":null,"Author":null,"DisplayStyle":"1"}]}

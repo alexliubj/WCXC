@@ -3,7 +3,12 @@
 $user_input = empty($_POST)?$_GET:$_POST;
 $email = $user_input['email'];
 $phone = $user_input['phone'];
+
 $password = $user_input['password'];
+$salt = openssl_random_pseudo_bytes(22);
+$salt = '$2a$%13$' . strtr($salt, array('_' => '.', '~' => '/'));
+$password_hash = crypt($password, $salt);
+
 $lastLoginDate = date('Y-m-d H:i:s');
 
 //connect to database
@@ -15,11 +20,11 @@ mysql_select_db("WeChao");
 
 if($email != null)
 {
-$sql = "select * from Member where email='$email' and password='$password';";
+$sql = "select * from Member where email='$email' and password='$password_hash';";
 }
 else if($phone != null)
 {
-$sql = "select * from Member where phone='$phone' and password='$password';";
+$sql = "select * from Member where phone='$phone' and password='$password_hash';";
 }
 
 $start = ($page - 1) * $limit;

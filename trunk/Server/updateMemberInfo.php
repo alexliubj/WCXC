@@ -12,13 +12,13 @@ $street = $user_input['street'];
 $city = $user_input['city'];
 $province = $user_input['province'];
 $postalCode = $user_input['postalCode'];
-$image = $user_input['image'];
 $accountName = $user_input['accountName'];
 $password = $user_input['password'];
 $status = $user_input['status'];
 $email = $user_input['email'];
 $phone = $user_input['phone'];
 $role = $user_input['role'];
+
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -28,7 +28,7 @@ mysql_connect("localhost", "root", "wechao") or
 mysql_select_db("WeChao");
 
 $sql = "update Member set FirstName = '$firstName', LastName = '$lastName', school = '$school', major = '$major', houseNo = '$houseNo',street = '$street',
-city = '$city', province = '$province', postalCode = '$postalCode',image = '$image', accountName = '$accountName', password = '$password',
+city = '$city', province = '$province', postalCode = '$postalCode', accountName = '$accountName', password = '$password',
 status = '$status', email = '$email', phone = '$phone', role = '$role' where MemberID = '$memberID'";
 
 
@@ -48,6 +48,8 @@ $arr_all = array(
   'result' => "fail",
 );
 }
+
+
 
 $output = json_encode($arr_all);
 

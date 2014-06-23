@@ -2,7 +2,7 @@
 
 $user_input = empty($_POST)?$_GET:$_POST;
 //$table = 'Advertisement';
-$articleID = $user_input['articleID'];
+$articleIssue = $user_input['articleIssue'];
 $schema = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
 $url = $schema.$_SERVER["SERVER_NAME"];
 
@@ -13,11 +13,12 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
-$sql = "select * from Article where ArticleID=".$articleID;
+$sql = "select * from Article where articleIssue=".$articleIssue;
 
 $start = ($page - 1) * $limit;
 $result = mysql_query($sql);
 $rst = array(
+		ArticleID=> '',
         ArticleTitle=> '',
         ArticleContent=> '',
         ArticleLargeImage=> '',
@@ -25,7 +26,6 @@ $rst = array(
         imagePosition=> '',
 		ArticleDate=> '',
 		Author=> '',
-		ArticleIssue=> '',
         DisplayStyle=> '',
 );
 
@@ -34,6 +34,7 @@ $arr_items = array();
 $i = 0;
 while ($row = mysql_fetch_array($result)) {
   $i++;
+  $rst['ArticleID'] = $row['ArticleID'];
   $rst['ArticleTitle'] = $row['ArticleTitle'];
   $rst['ArticleContent'] = $row['ArticleContent'];
   $rst['ArticleLargeImage'] = $url.$row['ArticleLargeImage'];
@@ -41,7 +42,6 @@ while ($row = mysql_fetch_array($result)) {
   $rst['imagePosition'] = $row['imagePosition'];
   $rst['ArticleDate'] = $row['ArticleDate'];
   $rst['Author'] = $row['Author'];
-  $rst['ArticleIssue'] = $row['ArticleIssue'];
   $rst['DisplayStyle'] = $row['DisplayStyle'];
  array_push($arr_items, $rst);
 }

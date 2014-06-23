@@ -12,16 +12,21 @@ $major = $user_input['major'];
 //$province = $user_input['province'];
 //$postalCode = $user_input['postalCode'];
 $accountName = $user_input['accountName'];
+
 $password = $user_input['password'];
+$salt = openssl_random_pseudo_bytes(22);
+$salt = '$2a$%13$' . strtr($salt, array('_' => '.', '~' => '/'));
+$password_hash = crypt($password, $salt);
+
 //$status = $user_input['status'];
 $email = $user_input['email'];
-//$phone = $user_input['phone'];
+$phone = $user_input['phone'];
 //$role = $user_input['role'];
+
 
 $image = "image/";
 $FileID=date("Ymd-His") . '-' . rand(100,999);
-$image = $image . $FileID.basename( $_FILES['uploaded']['name']) ;
-
+$image = $image . $FileID. $_FILES['uploaded']['name'];
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -35,7 +40,7 @@ if(move_uploaded_file($_FILES['uploaded']['tmp_name'], $image))
 {
 		$sql = "INSERT INTO Member
 		(school,major,image,accountName,password,email,phone)
-VALUES ('$school', '$major', '$image', '$accountName', '$password', '$email', '$phone');";
+VALUES ('$school', '$major', '$image', '$accountName', '$password_hash', '$email', '$phone');";
 		$result = mysql_query($sql);
 
 
