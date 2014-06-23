@@ -10,7 +10,6 @@ $address = $user_input['address'];
 $longitude = $user_input['longitude'];
 $latitude = $user_input['latitude'];
 $memberID = $user_input['memberID'];
-$image = $user_input['image'];
 $postDate = date('Y-m-d H:i:s');
 
 
@@ -22,8 +21,8 @@ mysql_connect("localhost", "root", "wechao") or
 mysql_select_db("WeChao");
 
 $sql = "INSERT INTO Advertisement
-(adType,title,content,serviceRegion,address,longitude,latitude,memberID,image,postDate)
-VALUES ('$adType', '$title', '$content', '$serviceRegion', '$address', '$longitude', '$latitude', '$memberID', '$image', '$postDate');";
+(adType,title,content,serviceRegion,address,longitude,latitude,memberID,postDate)
+VALUES ('$adType', '$title', '$content', '$serviceRegion', '$address', '$longitude', '$latitude', '$memberID', '$postDate');";
 //$start = ($page - 1) * $limit;
 
 $result = mysql_query($sql);

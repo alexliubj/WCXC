@@ -39,7 +39,7 @@ http://54.213.167.5/getCommentsByThreadID.php?threadID=1
 http://54.213.167.5/updateMemberInfo.php?memberID=2&firstName=firstName&lastName=lastName&school=school&major=major&houseNo=55&street=street&city=city&province=province&postalCode=postalCode&accountName=accountName&password=password&status=0&email=email&phone=phone&role=0
 {"result":"succ"}
 
-http://54.213.167.5/postAdInfo.php?adType=2&title=title&content=content&serviceRegion=region&address=address&longitude=22.22&latitude=1.3232&memberID=2&image=image
+http://54.213.167.5/postAdInfo.php?adType=2&title=title&content=content&serviceRegion=region&address=address&longitude=22.22&latitude=1.3232&memberID=2
 {"result":"succ"}
 
 http://54.213.167.5/deleteAdInfo.php?adID=4
