@@ -34,14 +34,29 @@ $i = 0;
 
 while ($row = mysql_fetch_array($result)) {
   $i++;
+   $sql1 = "SELECT * FROM ThreadImage WHERE ThreadID=".$row['ThreadID'];
+    $result1 = mysql_query($sql1);
+	$rst1 = array(
+        ImageID=> '',
+        ImageUrl=> '',
+);
+	$arr_image = array();
+	$m=0;
+	while ($row1 = mysql_fetch_array($result1)) {
+		$m++;
+	  $rst1['ImageID'] = $row1['ImageID'];
+	  $rst1['ImageUrl'] = $url.$row1['ImageUrl'];
+	 array_push($arr_image, $rst1);
+	}
+	
   $rst['ThreadTitle'] = $row['ThreadTitle'];
   $rst['ThreadPostDate'] = $row['ThreadPostDate'];
   $rst['ThreadUpdateDate'] = $row['ThreadUpdateDate'];
   $rst['ThreadContent'] = $row['ThreadContent'];
-  $rst['ThreadImages'] = $url.$row['ThreadImages'];
   $rst['ThreadType'] = $row['ThreadType'];
   $rst['MemberID'] = $row['MemberID'];
   $rst['AccountName'] = $row['AccountName'];
+  $rst['ThreadImages'] = $arr_image;
  array_push($arr_items, $rst);
 }
 

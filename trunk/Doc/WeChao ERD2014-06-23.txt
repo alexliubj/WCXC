@@ -8,7 +8,7 @@ Thread: ThreadID, ThreadTitle, ThreadPostDate, ThreadUpdateDate, ThreadContent, 
 
 LikeList: AccountName, ThreadID
 
-
+ThreadImage: ThreadID, ImageID, ImageUrl
 
 YellowPage:
 Advertisement: AdType, AdID, Title, Content, PostDate, UpdateDate, ServiceRegion, Address, DeliverPrice, Longitude, Latitude, MemberID, Image

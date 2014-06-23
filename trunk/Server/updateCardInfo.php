@@ -9,7 +9,7 @@ $cardNumber = $user_input['cardNumber'];
 $cardDes = $user_input['cardDes'];
 
 
-$image = "image/";
+$image = "image/card/";
 $FileID1=date("Ymd-His") . '-' . rand(100,999);
 $FileID2=date("Ymd-His") . '-' . rand(100,999);
 $frontViewImage = $image . $FileID1. $_FILES['uploaded1']['name'];
@@ -59,13 +59,13 @@ $arr_all = array(
 else
 {
 $arr_all = array(
-  'result' => "fail",
+  'result' => "$result",
 );
 }
 }
 else {
   $arr_all = array(
-  'result' => "fail",
+  'result' => "upload image fail",
   );
 }
 }
