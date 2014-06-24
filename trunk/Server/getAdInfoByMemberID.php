@@ -1,11 +1,10 @@
 <?php
 
 $user_input = empty($_POST)?$_GET:$_POST;
-//$table = 'Advertisement';
-$articleID = $user_input['articleID'];
+$table = 'Advertisement';
+$memberID = $user_input['memberID'];
 $page = $user_input['page'];
 $limit = $user_input['limit'];
-
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
   die("Could not connect: " . mysql_error());
@@ -14,16 +13,25 @@ mysql_connect("localhost", "root", "wechao") or
 mysql_select_db("WeChao");
 
 $start = ($page - 1) * $limit;
-$sql = "select * from AtcComment a join Member m on a.MemberID = m.MemberID where ArticleID=".$articleID." limit $start,$limit";
+$sql = "select * from Advertisement a join Member m on a.MemberID = m.MemberID where a.memberID=".$memberID." limit $start,$limit";
+
 
 $result = mysql_query($sql);
 $rst = array(
-        CommentID=> '',
-        CommentContent=> '',
-        MemberID=> '',
+        AdID=> '',
+        Title=> '',
+        Content=> '',
+        AdType=> '',
         PostDate=> '',
         UpdateDate=> '',
-        AccountName=>'',
+        ServiceRegion=> '',
+        Address=> '',
+        Longitude=> '',
+        Latitude=> '',
+        AccountName=> '',
+        Email=> '',
+        Phone=> '',
+        Role=> '',
 );
 
 //output all query
@@ -31,12 +39,20 @@ $arr_items = array();
 $i = 0;
 while ($row = mysql_fetch_array($result)) {
   $i++;
-  $rst['CommentID'] = $row['CommentID'];
-  $rst['CommentContent'] = $row['CommentContent'];
-  $rst['MemberID'] = $row['MemberID'];
+  $rst['AdID'] = $row['AdID'];
+  $rst['Title'] = $row['Title'];
+  $rst['Content'] = $row['Content'];
+  $rst['AdType'] = $row['AdType'];
   $rst['PostDate'] = $row['PostDate'];
   $rst['UpdateDate'] = $row['UpdateDate'];
+  $rst['ServiceRegion'] = $row['ServiceRegion'];
+  $rst['Address'] = $row['Address'];
+  $rst['Longitude'] = $row['Longitude'];
+  $rst['Latitude'] = $row['Latitude'];
   $rst['AccountName'] = $row['AccountName'];
+  $rst['Email'] = $row['Email'];
+  $rst['Phone'] = $row['Phone'];
+  $rst['Role'] = $row['Role'];
  array_push($arr_items, $rst);
 }
 

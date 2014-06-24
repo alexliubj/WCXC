@@ -5,6 +5,8 @@ $user_input = empty($_POST)?$_GET:$_POST;
 $memberID = $user_input['memberID'];
 $schema = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
 $url = $schema.$_SERVER["SERVER_NAME"];
+$page = $user_input['page'];
+$limit = $user_input['limit'];
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -13,9 +15,9 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
-$sql = "select * from Card where memberID=".$memberID;
-
 $start = ($page - 1) * $limit;
+$sql = "select * from Card where memberID=".$memberID." limit $start,$limit";
+
 $result = mysql_query($sql);
 $rst = array(
 		CardID=> '',

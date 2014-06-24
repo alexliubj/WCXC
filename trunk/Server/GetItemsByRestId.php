@@ -5,6 +5,8 @@ $table = 'Item';
 $restId = $user_input['restid'];
 $schema = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
 $url = $schema.$_SERVER["SERVER_NAME"];
+$page = $user_input['page'];
+$limit = $user_input['limit'];
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -13,9 +15,9 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
-$sql = "select * from Item where restid=".$restId;
-echo $sql;
 $start = ($page - 1) * $limit;
+$sql = "select * from Item where restid=".$restId." limit $start,$limit";
+
 $result = mysql_query($sql);
 $rst = array(
         ItemID=> '',

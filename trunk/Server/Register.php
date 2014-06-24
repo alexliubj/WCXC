@@ -24,7 +24,7 @@ $phone = $user_input['phone'];
 //$role = $user_input['role'];
 
 
-$image = "image/";
+$image = "image/member/";
 $FileID=date("Ymd-His") . '-' . rand(100,999);
 $image = $image . $FileID. $_FILES['uploaded']['name'];
 

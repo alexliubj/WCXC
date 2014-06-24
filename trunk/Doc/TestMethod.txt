@@ -4,19 +4,19 @@ put json int textbox of this page, then validate
 
 
 
-http://54.213.167.5/getItemsByRestID.php?restid=1
-select * from Item where restid=1{"result":"succ","data":[{"ItemID":"1","ItemName":null,"ItemImage":"http:\/\/54.213.167.5\/image\/123.jpg","ItemPrice":"2.2","ItemType":"1"},{"ItemID":"2","ItemName":null,"ItemImage":"http:\/\/54.213.167.5\/image\/123.jpg","ItemPrice":"2.3","ItemType":"1"}]}
+http://54.213.167.5/getItemsByRestID.php?restid=1&page=1&limit=2
+{"result":"succ","data":[{"ItemID":"1","ItemName":null,"ItemImage":"http:\/\/54.213.167.5\/image\/123.jpg","ItemPrice":"2.2","ItemType":"1"},{"ItemID":"2","ItemName":null,"ItemImage":"http:\/\/54.213.167.5\/image\/123.jpg","ItemPrice":"2.3","ItemType":"1"}]}
 
 
-http://54.213.167.5/getAdInfoByAdType.php?adType=0
-{"result":"succ","data":[{"AdID":"1","Title":"Ad1","Content":"Content Of Ad1","MemberID":"1","PostDate":"2013-06-15","UpdateDate":"2013-06-17","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","AccountName":"Neobility","Email":"neo.wu2@gmail.com","Phone":"647 - 899 - 0689","Role":"0"}]}
+http://54.213.167.5/getAdInfoByAdType.php?adType=1&page=1&limit=2
+{"result":"succ","data":[{"AdID":"5","Title":"title","Content":null,"MemberID":"2","PostDate":"2014-06-18 23:28:20","UpdateDate":null,"ServiceRegion":"serviceRegion","Address":"address","Longitude":"22.20000000","Latitude":"11.32320000","AccountName":"accountName","Email":"email","Phone":"phone","Role":"0"}]}
 
 
-http://54.213.167.5/getCommentsByArticleID.php?articleID=1
-{"result":"succ","data":[{"CommentID":"1","CommentContent":"Content","MemberID":"1","PostDate":"2014-06-16","UpdateDate":"2014-06-17"}]}
+http://54.213.167.5/getCommentsByArticleID.php?articleID=1&page=1&limit=2
+{"result":"succ","data":[{"CommentID":"1","CommentContent":"something that is to be expressed through some medium, as speech, writing, or any of various arts: a poetic form adequate to a poetic content.","MemberID":"1","PostDate":"2014-06-17 23:42:46","UpdateDate":"2014-06-17 00:00:00","AccountName":"Neobility"},{"CommentID":"2","CommentContent":"something that is to be expressed through some medium, as speech, writing, or any of various arts: a poetic form adequate to a poetic content.","MemberID":"1","PostDate":"2014-06-17 23:48:47","UpdateDate":null,"AccountName":"Neobility"}]}
 
-http://54.213.167.5/getRestInfo.php
-{"result":"succ","data":[{"AdID":"2","Title":"Old house","Content":"Chinese Food","MemberID":"1","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","DeliverPrice":"100","Image":"..\/image"}]}
+http://54.213.167.5/getRestInfo.php?page=1&limit=2
+{"result":"succ","data":[{"AdID":"1","Title":"Ad1","Content":"????","MemberID":"1","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","DeliverPrice":"100","Image":"http:\/\/54.213.167.5\/image\/123.jpg"},{"AdID":"2","Title":"Old house","Content":null,"MemberID":"1","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","DeliverPrice":"100","Image":"http:\/\/54.213.167.5\/image\/123.jpg"}]}
 
 http://54.213.167.5/postCommentToArticle.php?articleID=1&memberID=1&commentContent=content
 {"result":"succ"}
@@ -33,8 +33,8 @@ http://54.213.167.5/getThreadList.php?page=1&limit=2
 http://54.213.167.5/getThreadInfo.php?threadID=1
 {"result":"succ","data":[{"ThreadTitle":"first Thread","ThreadPostDate":"2014-06-18 00:00:00","ThreadUpdateDate":"2014-06-19 00:00:00","ThreadContent":"that which may be perceived in something: the latent versus the manifest content of a dream","ThreadImages":[{"ImageID":"1","ImageUrl":"http:\/\/54.213.167.5\/image\/thread123.jpg"},{"ImageID":"2","ImageUrl":"http:\/\/54.213.167.5\/image\/thread1234.jpg"}],"ThreadType":"0","MemberID":"1","AccountName":"Neobility"}]}
 
-http://54.213.167.5/getCommentsByThreadID.php?threadID=1
-{"result":"succ","data":[{"ThreadID":"3","ThreadTitle":"first comment for thread 1","ThreadPostDate":"2014-06-18 00:00:00","ThreadUpdateDate":"2014-06-18 00:00:00","ThreadContent":"content","ThreadImages":"image","ThreadType":"0","MemberID":"2"}]}
+http://54.213.167.5/getCommentsByThreadID.php?threadID=1&page=1&limit=2
+{"result":"succ","data":[{"ThreadID":"3","ThreadTitle":"first comment for thread 1","ThreadPostDate":"2014-06-18 00:00:00","ThreadUpdateDate":"2014-06-18 00:00:00","ThreadContent":"that which may be perceived in something: the latent versus the manifest content of a dream","ThreadImages":"http:\/\/54.213.167.5\/image\/123.jpg","ThreadType":"0","MemberID":"2","AccountName":"accountName"},{"ThreadID":"4","ThreadTitle":"title","ThreadPostDate":null,"ThreadUpdateDate":null,"ThreadContent":"that which may be perceived in something: the latent versus the manifest content of a dream","ThreadImages":"http:\/\/54.213.167.5\/image\/123.jpg","ThreadType":"0","MemberID":"2","AccountName":"accountName"}]}
 
 http://54.213.167.5/updateMemberInfo.php?memberID=2&firstName=firstName&lastName=lastName&school=school&major=major&houseNo=55&street=street&city=city&province=province&postalCode=postalCode&accountName=accountName&password=password&status=0&email=email&phone=phone&role=0
 {"result":"succ"}
@@ -69,11 +69,11 @@ http://54.213.167.5/likeOrUnlike.php?memberID=3&threadID=5&accountName=neo&like=
 {"result":"succ"}
 
 
-http://54.213.167.5/getLikeList.php?threadID=2
+http://54.213.167.5/getLikeList.php?threadID=2&page=1&limit=2
 {"result":"succ","data":[{"memberID":"3","accountName":"neo"},{"memberID":"3","accountName":"neo"}]}
 
 
-http://54.213.167.5/getCardByMemberID.php?memberID=1
+http://54.213.167.5/getCardByMemberID.php?memberID=1&page=1&limit=2
 {"result":"succ","data":[{"CardID":"1","CardType":"0","CardTitle":"title","CardBarcode":"barcode","CardNumber":"cardnumber","CardDes":"des","FrontViewImage":"~\/image\/123.jpg","BackViewImage":"~\/image\/123.jpg"}]}
 
 
@@ -101,3 +101,7 @@ http://54.213.167.5/deleteCardByCardID.php?cardID=3
 
 http://54.213.167.5/getArticleByArticleIssue.php?articleIssue=0
 {"result":"succ","data":[{"ArticleID":"1","ArticleTitle":"Title","ArticleContent":"something that is to be expressed through some medium, as speech, writing, or any of various arts: a poetic form adequate to a poetic content.","ArticleLargeImage":"http:\/\/54.213.167.5\/image\/largeImage.jpg","ArticleSmallImage":"http:\/\/54.213.167.5\/image\/smallImage.jpg","imagePosition":null,"ArticleDate":null,"Author":null,"DisplayStyle":"1"}]}
+
+
+http://54.213.167.5/getAdInfoByMemberID.php?memberID=1&page=1&limit=2
+{"result":"succ","data":[{"AdID":"1","Title":"Ad1","Content":"????","AdType":"1","PostDate":"2013-06-15 00:00:00","UpdateDate":"2013-06-17 00:00:00","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","AccountName":"Neobility","Email":"neo.wu2@gmail.com","Phone":"6478990689","Role":"0"},{"AdID":"2","Title":"Old house","Content":null,"AdType":"0","PostDate":"2013-06-15 00:00:00","UpdateDate":"2013-06-17 00:00:00","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","AccountName":"Neobility","Email":"neo.wu2@gmail.com","Phone":"6478990689","Role":"0"}]}

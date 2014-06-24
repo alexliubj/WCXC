@@ -6,6 +6,10 @@ $user_input = empty($_POST)?$_GET:$_POST;
 $schema = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
 $url = $schema.$_SERVER["SERVER_NAME"];
 
+$page = $user_input['page'];
+$limit = $user_input['limit'];
+
+
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
   die("Could not connect: " . mysql_error());
@@ -13,9 +17,9 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
-$sql = "select * from Advertisement where adType=0";
-
 $start = ($page - 1) * $limit;
+$sql = "select * from Advertisement where adType=0 limit $start,$limit";
+
 $result = mysql_query($sql);
 $rst = array(
         AdID=> '',

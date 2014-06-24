@@ -3,6 +3,8 @@
 $user_input = empty($_POST)?$_GET:$_POST;
 $table = 'Advertisement';
 $adType = $user_input['adType'];
+$page = $user_input['page'];
+$limit = $user_input['limit'];
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -11,9 +13,9 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
-$sql = "select * from Advertisement a join Member m on a.MemberID = m.MemberID where adType=".$adType;
-
 $start = ($page - 1) * $limit;
+$sql = "select * from Advertisement a join Member m on a.MemberID = m.MemberID where adType=".$adType." limit $start,$limit";
+
 $result = mysql_query($sql);
 $rst = array(
         AdID=> '',
