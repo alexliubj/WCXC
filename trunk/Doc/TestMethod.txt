@@ -36,7 +36,7 @@ http://54.213.167.5/getThreadInfo.php?threadID=1
 http://54.213.167.5/getCommentsByThreadID.php?threadID=1&page=1&limit=2
 {"result":"succ","data":[{"ThreadID":"3","ThreadTitle":"first comment for thread 1","ThreadPostDate":"2014-06-18 00:00:00","ThreadUpdateDate":"2014-06-18 00:00:00","ThreadContent":"that which may be perceived in something: the latent versus the manifest content of a dream","ThreadImages":"http:\/\/54.213.167.5\/image\/123.jpg","ThreadType":"0","MemberID":"2","AccountName":"accountName"},{"ThreadID":"4","ThreadTitle":"title","ThreadPostDate":null,"ThreadUpdateDate":null,"ThreadContent":"that which may be perceived in something: the latent versus the manifest content of a dream","ThreadImages":"http:\/\/54.213.167.5\/image\/123.jpg","ThreadType":"0","MemberID":"2","AccountName":"accountName"}]}
 
-http://54.213.167.5/updateMemberInfo.php?memberID=2&firstName=firstName&lastName=lastName&school=school&major=major&houseNo=55&street=street&city=city&province=province&postalCode=postalCode&accountName=accountName&password=password&status=0&email=email&phone=phone&role=0
+http://54.213.167.5/updateMemberInfo.php?memberID=2&firstName=firstName&lastName=lastName&school=school&major=major&address=address&city=city&province=province&postalCode=postalCode&accountName=accountName&password=password&email=email&phone=123456
 {"result":"succ"}
 
 http://54.213.167.5/postAdInfo.php?adType=2&title=title&content=content&serviceRegion=region&address=address&longitude=22.22&latitude=1.3232&memberID=2
@@ -84,14 +84,14 @@ http://54.213.167.5/uploadCard.php?cardType=0&cardTitle=title&cardBarcode=barcod
 http://54.213.167.5/updateCardInfo.php?cardID=1&cardTitle=titleoooo&cardBarcode=barcode&cardNumber=number&cardDes=Des&frontViewImage=~/image/123.jpg&backViewImage=~/image/123.jpg
 {"result":"succ"}
 
-http://54.213.167.5/register.php?school=school&major=major&accountName=accountName&password=passwordemail=email&phone=phone
+http://54.213.167.5/register.php?school=school&major=major&accountName=accountName&password=password&email=email
 http://54.213.167.5/register.php?firstName=firstName&lastName=lastName&school=school&major=major&houseNo=55&street=street&city=city&province=province&postalCode=postalCode&image=~/image/123.jpg&accountName=accountName&password=password&status=0&email=email&phone=phone&role=0
 {"result":"succ"}
 
 
-http://54.213.167.5/Login.php?email=neo.wu2@gmail.com&password=123456
+http://54.213.167.5/Login.php?email=email&password=password
 {"result":"succ","data":[{"memberID":"1","firstName":"Neo","lastName":"Wu","school":"Centennial","major":"","houseNo":"507","street":"4091 Sheppard Ave","city":"Toronto","province":"ON","postalCode":"3h2 5f1","image":"..\/image","accountName":"Neobility","password":"123456","status":"0","email":"neo.wu2@gmail.com","phone":"647 - 899 - 0689","role":"0"}]}
-http://54.213.167.5/Login.php?phone=6478990689&password=123456
+http://54.213.167.5/Login.php?phone=416-833-4368&password=password
 {"result":"succ","data":[{"memberID":"1","firstName":"Neo","lastName":"Wu","school":"Centennial","major":"","houseNo":"507","street":"4091 Sheppard Ave","city":"Toronto","province":"ON","postalCode":"3h2 5f1","image":"..\/image","accountName":"Neobility","password":"123456","status":"0","email":"neo.wu2@gmail.com","phone":"6478990689","role":"0"}]}
 
 

@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('America/Toronto');
 $user_input = empty($_POST)?$_GET:$_POST;
 //$table = 'Advertisement';
 //$firstName = $user_input['firstName'];
@@ -20,7 +20,7 @@ $password_hash = crypt($password, $salt);
 
 //$status = $user_input['status'];
 $email = $user_input['email'];
-$phone = $user_input['phone'];
+//$phone = $user_input['phone'];
 //$role = $user_input['role'];
 
 
@@ -34,15 +34,19 @@ mysql_connect("localhost", "root", "wechao") or
 
 //select a database
 mysql_select_db("WeChao");
-
+if($_FILES['uploaded']["error"] == 4)
+{
+	$sql = "INSERT INTO Member
+		(school,major,accountName,password,email)
+VALUES ('$school', '$major', '$accountName', '$password_hash', '$email');";
+}
 
 if(move_uploaded_file($_FILES['uploaded']['tmp_name'], $image))
 {
 		$sql = "INSERT INTO Member
-		(school,major,image,accountName,password,email,phone)
-VALUES ('$school', '$major', '$image', '$accountName', '$password_hash', '$email', '$phone');";
+		(school,major,image,accountName,password,email)
+VALUES ('$school', '$major', '$image', '$accountName', '$password_hash', '$email');";
 		$result = mysql_query($sql);
-
 
 if($result)
 {

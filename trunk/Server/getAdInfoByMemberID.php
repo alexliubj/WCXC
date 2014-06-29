@@ -3,8 +3,7 @@
 $user_input = empty($_POST)?$_GET:$_POST;
 $table = 'Advertisement';
 $memberID = $user_input['memberID'];
-$page = $user_input['page'];
-$limit = $user_input['limit'];
+
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
   die("Could not connect: " . mysql_error());
@@ -13,7 +12,7 @@ mysql_connect("localhost", "root", "wechao") or
 mysql_select_db("WeChao");
 
 $start = ($page - 1) * $limit;
-$sql = "select * from Advertisement a join Member m on a.MemberID = m.MemberID where a.memberID=".$memberID." limit $start,$limit";
+$sql = "select * from Advertisement a join Member m on a.MemberID = m.MemberID where a.memberID=".$memberID;
 
 
 $result = mysql_query($sql);

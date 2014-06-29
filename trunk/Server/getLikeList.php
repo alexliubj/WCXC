@@ -2,8 +2,6 @@
 
 $user_input = empty($_POST)?$_GET:$_POST;
 $threadID = $user_input['threadID'];
-$page = $user_input['page'];
-$limit = $user_input['limit'];
 
 //connect to database
 mysql_connect("localhost", "root", "wechao") or
@@ -13,7 +11,7 @@ mysql_connect("localhost", "root", "wechao") or
 mysql_select_db("WeChao");
 
 $start = ($page - 1) * $limit;
-$sql = "select * from LikeList where threadID=".$threadID." limit $start,$limit";
+$sql = "select * from LikeList where threadID=".$threadID;
 
 $result = mysql_query($sql);
 $rst = array(

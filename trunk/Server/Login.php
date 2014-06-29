@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('America/Toronto');
 $user_input = empty($_POST)?$_GET:$_POST;
 $email = $user_input['email'];
 $phone = $user_input['phone'];
@@ -29,20 +29,17 @@ $sql = "select * from Member where phone='$phone' and password='$password_hash';
 
 $start = ($page - 1) * $limit;
 $result = mysql_query($sql);
+$num_rows = mysql_num_rows($result);
 $rst = array(
 		memberID=>'',
-        firstName=> '',
-        lastName=> '',
         school=> '',
         major=> '',
-        houseNo=> '',
-		street=> '',
+		address=> '',
 		city=> '',
 		province=> '',
 		postalCode=> '',
-        image=> '',
+        profileImage=> '',
 		accountName=> '',
-		password=> '',
 		status=> '',
 		email=> '',
         phone=> '',
@@ -55,27 +52,27 @@ $i = 0;
 while ($row = mysql_fetch_array($result)) {
   $i++;
   $rst['memberID'] = $row['MemberID'];
-  $rst['firstName'] = $row['FirstName'];
-  $rst['lastName'] = $row['LastName'];
   $rst['school'] = $row['School'];
-  $rst['houseNo'] = $row['HouseNo'];
-  $rst['street'] = $row['Street'];
+  $rst['major'] = $row['Major'];
+  $rst['address'] = $row['Street'];
   $rst['city'] = $row['City'];
   $rst['province'] = $row['Province'];
   $rst['postalCode'] = $row['PostalCode'];
-  $rst['image'] = $row['Image'];
+  $rst['profileImage'] = $row['Image'];
   $rst['accountName'] = $row['AccountName'];
-  $rst['password'] = $row['Password'];
   $rst['status'] = $row['Status'];
   $rst['email'] = $row['Email'];
   $rst['phone'] = $row['Phone'];
   $rst['role'] = $row['Role'];
+  if($i==1)
+  {
  array_push($arr_items, $rst);
+  }
 }
 
 $memberID = $rst['memberID'];
 
-if($result)
+if($result&&$num_rows>0)
 {
 $sql1 = "update Member set lastLoginDate = '$lastLoginDate' where MemberID = '$memberID'";
 $result1 = mysql_query($sql1);
@@ -98,7 +95,7 @@ $arr_all = array(
 else
 {
 $arr_all = array(
-  'result' => "fail",
+  'result' => "Login Fail",
   'data' => $arr_items,
 );
 }
