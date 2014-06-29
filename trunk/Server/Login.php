@@ -5,9 +5,7 @@ $email = $user_input['email'];
 $phone = $user_input['phone'];
 
 $password = $user_input['password'];
-$salt = openssl_random_pseudo_bytes(22);
-$salt = '$2a$%13$' . strtr($salt, array('_' => '.', '~' => '/'));
-$password_hash = crypt($password, $salt);
+$password_hash = md5($password);
 
 $lastLoginDate = date('Y-m-d H:i:s');
 

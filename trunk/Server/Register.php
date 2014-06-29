@@ -14,9 +14,7 @@ $major = $user_input['major'];
 $accountName = $user_input['accountName'];
 
 $password = $user_input['password'];
-$salt = openssl_random_pseudo_bytes(22);
-$salt = '$2a$%13$' . strtr($salt, array('_' => '.', '~' => '/'));
-$password_hash = crypt($password, $salt);
+$password_hash = md5($password);
 
 //$status = $user_input['status'];
 $email = $user_input['email'];
@@ -34,14 +32,25 @@ mysql_connect("localhost", "root", "wechao") or
 
 //select a database
 mysql_select_db("WeChao");
-if($_FILES['uploaded']["error"] == 4)
+
+$email_check = mysql_query("SELECT email FROM Member WHERE email='$email'");
+
+$do_email_check = mysql_num_rows($email_check);
+
+if($do_email_check > 0){
+	$arr_all = array(
+  'result' => "Email is already in use!",
+);
+
+}
+else if($_FILES['uploaded']["error"] == 4)
 {
 	$sql = "INSERT INTO Member
 		(school,major,accountName,password,email)
 VALUES ('$school', '$major', '$accountName', '$password_hash', '$email');";
 }
 
-if(move_uploaded_file($_FILES['uploaded']['tmp_name'], $image))
+else if(move_uploaded_file($_FILES['uploaded']['tmp_name'], $image))
 {
 		$sql = "INSERT INTO Member
 		(school,major,image,accountName,password,email)
@@ -57,14 +66,14 @@ $arr_all = array(
 else
 {
 $arr_all = array(
-  'result' => "fail",
+  'result' => "insert fail",
 );
 }
 
 }
 else {
   $arr_all = array(
-  'result' => "fail",
+  'result' => "upload image fail",
   );
 }
 
