@@ -13,7 +13,7 @@ mysql_connect("localhost", "root", "wechao") or
 //select a database
 mysql_select_db("WeChao");
 
-$sql = "select * from Article where articleIssue=".$articleIssue;
+$sql = "select * from article where articleIssue=".$articleIssue;
 
 $start = ($page - 1) * $limit;
 $result = mysql_query($sql);
