@@ -9,7 +9,7 @@
 #import "CardDetailsViewController.h"
 #import "AppDelegate.h"
 #import "HomeTabBarController.h"
-
+#import "CardModel.h"
 #import "ITTCommonFunctions.h"
 #import "ITTGobalPaths.h"
 #import "ITTCommonMacros.h"
@@ -67,15 +67,33 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-//    [super viewWillDisappear:animated];
-//    [AppDelegate GetAppDelegate].tabBarController.tabBarHidden = FALSE;
+    [super viewWillDisappear:animated];
+    if(!isChooseImage)
+    [AppDelegate GetAppDelegate].tabBarController.tabBarHidden = FALSE;
+    else
+    {
+        [AppDelegate GetAppDelegate].tabBarController.tabBarHidden = TRUE;
+    }
 
 }
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _newCard = YES;
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+         andCardModel:(CardModel *)cardModel
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        _cardModel = cardModel;
     }
     return self;
 }
@@ -115,14 +133,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑"
-                                                                              style:UIBarButtonItemStylePlain
-                                                                             target:self
-                                                                             action:@selector(editNewCard)];
-    
+    if (!_newCard) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑"
+                                                                                  style:UIBarButtonItemStylePlain
+                                                                                 target:self
+                                                                                 action:@selector(editNewCard)];
+    }
+   
     // Do any additional setup after loading the view from its nib.
     
-    [_backScroll setContentSize:CGSizeMake(320, 700)];
+    [_backScroll setContentSize:CGSizeMake(320, 650)];
+    if(_newCard)
+    self.title = @"添加卡片";
+    else
+    {
+        self.title = @"我的卡片";
+    }
     
 }
 
@@ -144,7 +170,9 @@
 #pragma mark - image picker delegte
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-	[picker dismissViewControllerAnimated:YES completion:^{}];
+	[picker dismissViewControllerAnimated:YES completion:^{
+        isChooseImage = NO;
+    }];
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     NSString *fullPath = nil;
@@ -168,13 +196,13 @@
     if(isFront == 0)
     {
         fImage = savedImage;
-    [self.frontImage setBackgroundImage:savedImage forState:UIControlStateNormal];
+    [self.frontImageView setImage:savedImage];
     }
     
     else
     {
         eImage = savedImage;
-        [self.endImage setBackgroundImage:savedImage forState:UIControlStateNormal];
+        [self.endImageView setImage:savedImage];
 
     }
     isFullScreen = NO;
@@ -186,7 +214,9 @@
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-	[self dismissViewControllerAnimated:YES completion:^{}];
+	[self dismissViewControllerAnimated:YES completion:^{
+        isChooseImage = NO;
+    }];
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -265,8 +295,10 @@
         imagePickerController.allowsEditing = YES;
         
         imagePickerController.sourceType = sourceType;
-        
-        [self presentViewController:imagePickerController animated:YES completion:^{}];
+        isChooseImage = YES;
+
+        [self presentViewController:imagePickerController animated:YES completion:^{
+        }];
         
     }
 }
@@ -326,6 +358,7 @@
     _endImage.hidden = NO;
     _generate.hidden = NO;
     _postBtn.hidden = NO;
+    _done.hidden = NO;
     [_tftBarCode setEnabled:YES];
     [_tftTitle setEnabled:YES];
     [_tftDes setEnabled:YES];
@@ -338,6 +371,7 @@
     _endImage.hidden = YES;
     _generate.hidden = YES;
     _postBtn.hidden = YES;
+    _done.hidden = YES;
     [_tftBarCode setEnabled:NO];
     [_tftTitle setEnabled:NO];
     [_tftDes setEnabled:NO];

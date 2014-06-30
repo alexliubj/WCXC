@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ITTBaseDataRequest.h"
 
-@interface LoginViewController : UIViewController
+
+@interface LoginViewController : UIViewController<DataRequestDelegate>
+{
+    NSMutableArray *userArray;
+}
 
 @property (nonatomic, strong) IBOutlet UITextField *userName;
 @property (nonatomic, strong) IBOutlet UITextField *userPassword;

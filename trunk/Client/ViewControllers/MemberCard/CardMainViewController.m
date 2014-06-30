@@ -58,27 +58,71 @@
     if (newMagazine == nil) {
         newMagazine = [NewMagazineCell loadFromXib];
     }
-    
+    newMagazine.rightUtilityButtons = [self rightButtons];
     CardModel *model= [[CardModel alloc] init];
     model = [cardArray objectAtIndex:indexPath.row];
     newMagazine.cellDes.text =model.CardDes;
     newMagazine.cellTitle.text = model.CardTitle;
     [newMagazine.cellImageView loadImage:model.FrontViewImage];
+    if(model.CardType == 0)
+        newMagazine.hidden = YES;
+    else
+    newMagazine.cellXuechao.text = @"学潮卡";
     
   //  newMagazine.url = [_images objectAtIndex:indexPath.row];
     return newMagazine;
 }
-
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
+{
+    switch (index) {
+        case 0:
+        {
+            NSLog(@"More button was pressed");
+            UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
+            [alertTest show];
+            
+            [cell hideUtilityButtonsAnimated:YES];
+            break;
+        }
+        case 1:
+        {
+            // Delete button was pressed
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            
+            //[_testArray[cellIndexPath.section] removeObjectAtIndex:cellIndexPath.row];
+            [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            break;
+        }
+        default:
+            break;
+    }
+}
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+//    [rightUtilityButtons sw_addUtilityButtonWithColor:
+//     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+//                                                title:@"More"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+                                                title:@"Delete"];
+    
+    return rightUtilityButtons;
+}
 // Called after the user changes the selection.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CardDetailsViewController *detail = [[CardDetailsViewController alloc] initWithNibName:@"CardDetailsViewController" bundle:nil];
+    CardModel *card = [[CardModel alloc] init];
+    card =[cardArray objectAtIndex:indexPath.row];
+    CardDetailsViewController *detail = [[CardDetailsViewController alloc] initWithNibName:@"CardDetailsViewController" bundle:nil andCardModel:card];
     [self.navigationController pushViewController:detail animated:YES];
     
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
     cardArray = [[NSMutableArray alloc] initWithCapacity:0];
 	self.title = @"会员卡";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu"
@@ -91,7 +135,17 @@
                                                                             target:self
                                                                              action:@selector(addNewCard)];
   //  [self deleteAdInfo];
+    
+    
+    UIColor *tintColor = [UIColor colorWithRed:48/255.f green:146/255.f  blue:255/255.f  alpha:1.0f];
+    
+    [[UINavigationBar appearance]setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance]setBarTintColor:tintColor];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
+    [[UINavigationBar appearance]setTitleTextAttributes:@{UITextAttributeTextColor : [UIColor whiteColor]}];
+    
     [self setupRefresh];
+    
 }
 
 
@@ -189,7 +243,7 @@
 #pragma end request
 -(void)addNewCard
 {
-    AddNewCardViewController *detail = [[AddNewCardViewController alloc] initWithNibName:@"AddNewCardViewController" bundle:nil];
+    CardDetailsViewController *detail = [[CardDetailsViewController alloc] initWithNibName:@"CardDetailsViewController" bundle:nil];
     [self.navigationController pushViewController:detail animated:YES];
 }
 

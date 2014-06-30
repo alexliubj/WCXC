@@ -10,8 +10,8 @@
 #import "CardMainViewController.h"
 #import "DEMOSecondViewController.h"
 #import "UIViewController+REFrostedViewController.h"
-#import "MyAdViewController.h"
-#import "MyAdViewController.h"
+#import "MYPostViewController.h"
+#import "MYPostViewController.h"
 #import "LoginViewController.h"
 #import "AboutViewController.h"
 #import "UserProfileViewController.h"
@@ -45,7 +45,7 @@
         [imageView setEnableTapEvent:YES];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
-        label.text = @"Alex Liu";
+        label.text = @"Jeff Li";
         label.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
         label.backgroundColor = [UIColor clearColor];
         label.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
@@ -343,7 +343,7 @@
 
 -(void)myAds
 {
-    MyAdViewController *myAds = [[ MyAdViewController alloc] initWithNibName:@"MyAdViewController" bundle:nil];
+    MYPostViewController *myAds = [[ MYPostViewController alloc] initWithNibName:@"MYPostViewController" bundle:nil];
     UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
 
     navigationController.viewControllers = @[myAds];

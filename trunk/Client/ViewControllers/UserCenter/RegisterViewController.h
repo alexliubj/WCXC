@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ITTBaseDataRequest.h"
 
 
-@interface RegisterViewController : UIViewController
-
+@interface RegisterViewController : UIViewController<DataRequestDelegate>
+{
+}
 
 @property (nonatomic,strong) UITableView *registerTableView;
 

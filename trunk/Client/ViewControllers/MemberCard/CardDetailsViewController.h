@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "ITTImageView.h"
-
+#import "CardModel.h"
 #import "ITTBaseDataRequest.h"
 @interface CardDetailsViewController : UIViewController<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,DataRequestDelegate,UIScrollViewDelegate>
 {
     UIImage *fImage;
     UIImage *eImage;
     int isFront;
+    CardModel *_cardModel;
+    BOOL isChooseImage;
 }
 
 @property(nonatomic, strong) IBOutlet UILabel *cardTitle;
@@ -29,6 +31,8 @@
 @property (nonatomic, strong) IBOutlet UITextField *tftTitle;
 @property (nonatomic, strong) IBOutlet UITextField *tftDes;
 @property (nonatomic, assign) BOOL isEditing;
+@property (nonatomic, strong) IBOutlet UIImageView *frontImageView;
+@property (nonatomic, strong) IBOutlet UIImageView *endImageView;
 @property (nonatomic, assign) BOOL newCard;
 @property (nonatomic, strong) IBOutlet UIButton *postBtn;
 @property (nonatomic, strong) IBOutlet UIScrollView *backScroll;
@@ -37,5 +41,9 @@
 -(IBAction)endCardOnClick:(id)sender;
 -(IBAction)doneButtonOnclick:(id)sender;
 -(IBAction)generateButtonOnclick:(id)sender;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+         andCardModel:(CardModel *)cardModel;
 
 @end

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ITTImageView.h"
+#import "SWTableViewCell.h"
 
-@interface NewMagazineCell : UITableViewCell
+@interface NewMagazineCell : SWTableViewCell
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) IBOutlet UILabel *cellTitle;
 @property (nonatomic, strong) IBOutlet UILabel *cellDes;

@@ -10,7 +10,12 @@
 #import "UConstants.h"
 #import "Utils.h"
 #import "AppConstants.h"
+#import "DemoDataRequest.h"
 
+
+
+#import "AppDelegate.h"
+#import "HomeTabBarController.h"
 @interface RegisterViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic,assign) BOOL          isRead;
@@ -18,6 +23,19 @@
 @end
 
 @implementation RegisterViewController
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [AppDelegate GetAppDelegate].tabBarController.tabBarHidden = TRUE;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [AppDelegate GetAppDelegate].tabBarController.tabBarHidden = FALSE;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,11 +47,6 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated{
-    
-    [super viewWillAppear:animated];
-    
-}
 - (void)viewDidDisappear:(BOOL)animated{
     
     [super viewDidDisappear:animated];
@@ -77,7 +90,7 @@
 {
     [super viewDidLoad];
     
-
+    self.title = @"注册";
     //创建tableView
     [self createTableView];
 }
@@ -87,7 +100,7 @@
  */
 - (void)createTableView{
 
-    _registerTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.f, (FSystenVersion >= 7.0)?64.f:44.f, 320.f, (FSystenVersion >=7.0)?(ISIPHONE5?(568.f - 64.f):(480.f - 64.f)):(ISIPHONE5?(548.f - 44.f):(460.f - 44.f))) style:UITableViewStyleGrouped];
+    _registerTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.f, (FSystenVersion >= 7.0)?24.f:4.f, 320.f, (FSystenVersion >=7.0)?(ISIPHONE5?(568.f - 64.f):(480.f - 64.f)):(ISIPHONE5?(548.f - 44.f):(460.f - 44.f))) style:UITableViewStyleGrouped];
     _registerTableView.allowsSelection = NO;
     _registerTableView.delegate = self;
     _registerTableView.dataSource = self;
@@ -195,22 +208,29 @@
         textField.tag = Tag_RecommadTextField;
         textField.returnKeyType = UIReturnKeyDone;
         textField.delegate = self;
-        textField.placeholder = @"推荐人,(可选填)";
+        textField.placeholder = @"学校";
         [cell addSubview:textField];
         
     }else if (indexPath.section == 4){
         
         cell.imageView.image = PNGIMAGE(@"register_lbs@2x");
         
-        UILabel *label = [Utils labelWithFrame:CGRectMake(50.f, 14.f, 200.f, 21.f) withTitle:@"来源" titleFontSize:[UIFont systemFontOfSize:14.f] textColor:[UIColor lightGrayColor] backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentLeft];
-        label.tag = Tag_SourceLabel;
-        [cell addSubview:label];
+//        UILabel *label = [Utils labelWithFrame:CGRectMake(50.f, 14.f, 200.f, 21.f) withTitle:@"专业" titleFontSize:[UIFont systemFontOfSize:14.f] textColor:[UIColor lightGrayColor] backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentLeft];
+//        label.tag = Tag_SourceLabel;
+//        [cell addSubview:label];
         
-        UIButton *sourceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        sourceBtn.frame = CGRectMake(260.f, 0.f, 50.f, 44.f);
-        [sourceBtn addTarget:self action:@selector(sourceBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [sourceBtn setImage:[UIImage imageNamed:@"mypoisition@2x"] forState:UIControlStateNormal];
-        [cell addSubview:sourceBtn];
+        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(50.f, 12.f, 220.f, 21.f)];
+        textField.tag = Tag_RecommadTextField;
+        textField.returnKeyType = UIReturnKeyDone;
+        textField.delegate = self;
+        textField.placeholder = @"专业";
+        [cell addSubview:textField];
+        
+//        UIButton *sourceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        sourceBtn.frame = CGRectMake(260.f, 0.f, 50.f, 44.f);
+//        [sourceBtn addTarget:self action:@selector(sourceBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+//        [sourceBtn setImage:[UIImage imageNamed:@"mypoisition@2x"] forState:UIControlStateNormal];
+//        [cell addSubview:sourceBtn];
         
     }else if (indexPath.section == 5){
         
@@ -246,14 +266,14 @@
         
         UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 320.f, 21.f)];
         footerView.backgroundColor = [UIColor clearColor];
-        UILabel *label = [Utils labelWithFrame:CGRectMake(10.f, 0.f, 300.f, 21.f) withTitle:@"6位字符以上，可包含数字、字母（区分大小写）" titleFontSize:[UIFont systemFontOfSize:10.f] textColor:[UIColor blackColor] backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentLeft];
+        UILabel *label = [Utils labelWithFrame:CGRectMake(10.f, 0.f, 300.f, 21.f) withTitle:@"请填写您在读获毕业院校" titleFontSize:[UIFont systemFontOfSize:10.f] textColor:[UIColor blackColor] backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentLeft];
         [footerView addSubview:label];
         return footerView;
     }else if (section == 3){
         
         UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 320.f, 21.f)];
         footerView.backgroundColor = [UIColor clearColor];
-        UILabel *label = [Utils labelWithFrame:CGRectMake(10.f, 0.f, 300.f, 21.f) withTitle:@"请填写推荐您的好友的用户名" titleFontSize:[UIFont systemFontOfSize:10.f] textColor:[UIColor blackColor] backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentLeft];
+        UILabel *label = [Utils labelWithFrame:CGRectMake(10.f, 0.f, 300.f, 21.f) withTitle:@"您的相关专业" titleFontSize:[UIFont systemFontOfSize:10.f] textColor:[UIColor blackColor] backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentLeft];
         [footerView addSubview:label];
         return footerView;
     }else if (section == 4){

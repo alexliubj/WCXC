@@ -94,8 +94,8 @@
 
         NSString *executableversion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     
-    self.title = [NSString stringWithFormat:@"Version : %@",executableversion];
-    self.description.text = NSLocalizedString(@"aboutDetails", nil);
+    self.title = [NSString stringWithFormat:@"关于: Version %@",executableversion];
+    //self.description.text = NSLocalizedString(@"aboutDetails", nil);
 }
 
 

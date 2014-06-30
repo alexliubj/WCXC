@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ITTBaseDataRequest.h"
-@interface CardMainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,DataRequestDelegate>
+#import "CardModel.h"
+#import "SWTableViewCell.h"
+@interface CardMainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,DataRequestDelegate,SWTableViewCellDelegate>
 {
     NSMutableArray *cardArray;
+    CardModel *_cardModel;
 }
 @property (nonatomic,strong) IBOutlet UITableView *tableView;
 

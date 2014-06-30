@@ -98,9 +98,6 @@
     }
 }
 
-// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"RestCell";
@@ -187,7 +184,12 @@
     // 2.2秒后刷新表格UI
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // 刷新表格
-        [self getAllArticleByIssueId:currentIssue--];
+        if(currentIssue <= 1)
+            [self getAllArticleByIssueId:currentIssue];
+        else
+            [self getAllArticleByIssueId:--currentIssue];
+
+        
     });
 }
 
@@ -196,7 +198,7 @@
     isHeaderRefresh = NO;
     // 2.2秒后刷新表格UI
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self getAllArticleByIssueId:currentIssue++];
+        [self getAllArticleByIssueId:++currentIssue];
     });
 }
 

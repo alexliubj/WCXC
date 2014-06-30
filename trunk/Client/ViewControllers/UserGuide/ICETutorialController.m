@@ -59,19 +59,19 @@
     
     // Init the pages texts, and pictures.
     ICETutorialPage *layer1 = [[ICETutorialPage alloc] initWithSubTitle:@"Picture 1"
-                                                            description:@"Champs-Elysées by night"
+                                                            description:@"Apps 新手指引1"
                                                             pictureName:@"tutorial_background_00@2x.jpg"];
     ICETutorialPage *layer2 = [[ICETutorialPage alloc] initWithSubTitle:@"Picture 2"
-                                                            description:@"The Eiffel Tower with\n cloudy weather"
+                                                            description:@"Apps 新手指引2"
                                                             pictureName:@"tutorial_background_01@2x.jpg"];
     ICETutorialPage *layer3 = [[ICETutorialPage alloc] initWithSubTitle:@"Picture 3"
-                                                            description:@"An other famous street of Paris"
+                                                            description:@"Apps 新手指引3"
                                                             pictureName:@"tutorial_background_02@2x.jpg"];
     ICETutorialPage *layer4 = [[ICETutorialPage alloc] initWithSubTitle:@"Picture 4"
-                                                            description:@"The Eiffel Tower with a better weather"
+                                                            description:@"Apps 新手指引4"
                                                             pictureName:@"tutorial_background_03@2x.jpg"];
     ICETutorialPage *layer5 = [[ICETutorialPage alloc] initWithSubTitle:@"Picture 5"
-                                                            description:@"The Louvre's Museum Pyramide"
+                                                            description:@"Apps 新手指引5"
                                                             pictureName:@"tutorial_background_04@2x.jpg"];
     
     // Set the common style for SubTitles and Description (can be overrided on each page).
@@ -111,8 +111,7 @@
     // Set button 2 action, stop the scrolling.
     __unsafe_unretained typeof(self) weakSelf = self;
     [self setButton2Block:^(UIButton *button){
-        NSLog(@"Button 2 pressed.");
-        NSLog(@"Auto-scrolling stopped.");
+
         
         [self.view removeFromSuperview];
        // [weakSelf stopScrolling];
