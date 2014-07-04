@@ -32,6 +32,7 @@ $rst = array(
         Email=> '',
         Phone=> '',
         Role=> '',
+		Contact=> '',	
 );
 
 //output all query
@@ -53,6 +54,7 @@ while ($row = mysql_fetch_array($result)) {
   $rst['Email'] = $row['Email'];
   $rst['Phone'] = $row['Phone'];
   $rst['Role'] = $row['Role'];
+  $rst['Contact'] = $row['Contact'];
  array_push($arr_items, $rst);
 }
 

@@ -62,3 +62,12 @@ scp -r root@42.121.6.106:/var/www/push /Users/user/Desktop/CGCTV_Push
 scp -r C:/Users/Neo/Documents/GitHub/WCXC/trunk/Server/123.php ec2-user@54.213.167.5:/var/www/html/123.php -i C:/Users/Neo/Desktop/WeChao/WeChaoKey.ppk
 
 scp -i wechaokey.pem /Users/user/Downloads/app-20140315.tar.gz ec2-user@54.213.167.5:/var/www/html/admin/
+
+scp -i wechaokey.pem /Users/Neo/Desktop/WeChao/app intro1.pdf ec2-user@54.213.167.5:/var/www/html/admin/
+
+
+
+
+12. grant permission to a user
+
+chown user -R /var/www/html

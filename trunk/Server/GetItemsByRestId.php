@@ -16,7 +16,7 @@ mysql_connect("localhost", "root", "wechao") or
 mysql_select_db("WeChao");
 
 $start = ($page - 1) * $limit;
-$sql = "select * from Item where restid=".$restId." limit $start,$limit";
+$sql = "select * from item where restid=".$restId." limit $start,$limit";
 
 $result = mysql_query($sql);
 $rst = array(
@@ -33,7 +33,7 @@ $i = 0;
 while ($row = mysql_fetch_array($result)) {
   $i++;
   $rst['ItemID'] = $row['ItemID'];
-  $rst['ItemName'] = $row['CateImg'];
+  $rst['ItemName'] = $row['ItemName'];
   $rst['ItemImage'] = $url.$row['ItemImage'];
   $rst['ItemPrice'] = $row['ItemPrice'];
   $rst['ItemType'] = $row['ItemType'];

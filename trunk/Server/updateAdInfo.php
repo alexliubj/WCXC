@@ -9,6 +9,7 @@ $serviceRegion = $user_input['serviceRegion'];
 $address = $user_input['address'];
 $longitude = $user_input['longitude'];
 $latitude = $user_input['latitude'];
+$contact = $user_input['contact'];
 //$image = $user_input['image'];
 
 //connect to database
@@ -19,7 +20,7 @@ mysql_connect("localhost", "root", "wechao") or
 mysql_select_db("WeChao");
 
 $sql = "update Advertisement set title = '$title', content = '$content', serviceRegion = '$serviceRegion', address = '$address',longitude = '$longitude',
-latitude = '$latitude' where adID = '$adID'";
+latitude = '$latitude', contact = '$contact' where adID = '$adID'";
 
 
 $start = ($page - 1) * $limit;
