@@ -18,7 +18,7 @@ mysql_connect("localhost", "root", "wechao") or
 mysql_select_db("WeChao");
 
 $start = ($page - 1) * $limit;
-$sql = "select * from Advertisement where adType=0 limit $start,$limit";
+$sql = "select * from advertisement where adType=0 limit $start,$limit";
 
 $result = mysql_query($sql);
 $rst = array(

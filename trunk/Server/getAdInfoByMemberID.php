@@ -12,7 +12,7 @@ mysql_connect("localhost", "root", "wechao") or
 mysql_select_db("WeChao");
 
 $start = ($page - 1) * $limit;
-$sql = "select * from Advertisement a join Member m on a.MemberID = m.MemberID where a.memberID=".$memberID;
+$sql = "select * from advertisement a join Member m on a.MemberID = m.MemberID where a.memberID=".$memberID;
 
 
 $result = mysql_query($sql);

@@ -14,7 +14,7 @@ mysql_connect("localhost", "root", "wechao") or
 mysql_select_db("WeChao");
 
 $start = ($page - 1) * $limit;
-$sql = "select * from Advertisement a join Member m on a.MemberID = m.MemberID where adType=".$adType." limit $start,$limit";
+$sql = "select * from advertisement a join Member m on a.MemberID = m.MemberID where adType=".$adType." limit $start,$limit";
 
 $result = mysql_query($sql);
 $rst = array(
