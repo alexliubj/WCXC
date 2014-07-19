@@ -9,7 +9,7 @@ $threadType = $user_input['threadType'];
 $memberID = $user_input['memberID'];
 $postDate = date('Y-m-d H:i:s');
 
-$image = "image/thread";
+$image = "image/thread/";
 for($i = 1; $i <=9; $i++)
 {
 	if(is_uploaded_file($_FILES['uploaded'.$i]['tmp_name'])

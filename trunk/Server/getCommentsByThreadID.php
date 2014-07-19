@@ -16,7 +16,7 @@ mysql_connect("localhost", "root", "wechao") or
 mysql_select_db("WeChao");
 
 $start = ($page - 1) * $limit;
-$sql = "select * from Thread t join Member m on t.MemberID = m.MemberID where ParentID=".$threadID." limit $start,$limit";
+$sql = "select * from Thread t join Member m on t.MemberID = m.MemberID where ParentID=".$threadID." order by ThreadPostDate DESC limit $start,$limit";
 
 $result = mysql_query($sql);
 $rst = array(
@@ -29,6 +29,7 @@ $rst = array(
 		ThreadType=> '',
 		MemberID=> '',
 		AccountName=> '',
+		MemberImage=> '',
 );
 
 //output all query
@@ -45,6 +46,7 @@ while ($row = mysql_fetch_array($result)) {
   $rst['ThreadType'] = $row['ThreadType'];
   $rst['MemberID'] = $row['MemberID'];
   $rst['AccountName'] = $row['AccountName'];
+  $rst['MemberImage'] = $url.$row['Image'];
  array_push($arr_items, $rst);
 }
 
@@ -68,3 +70,4 @@ $output = json_encode($arr_all);
 print_r($output);
 
 ?>
+
