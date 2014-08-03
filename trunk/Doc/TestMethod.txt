@@ -12,11 +12,11 @@ http://54.213.167.5/getAdInfoByAdType.php?adType=1&page=1&limit=2
 {"result":"succ","data":[{"AdID":"5","Title":"title","Content":null,"MemberID":"2","PostDate":"2014-06-18 23:28:20","UpdateDate":null,"ServiceRegion":"serviceRegion","Address":"address","Longitude":"22.20000000","Latitude":"11.32320000","AccountName":"accountName","Email":"email","Phone":"phone","Role":"0"}]}
 
 
-http://54.213.167.5/getCommentsByArticleID.php?articleID=1&page=1&limit=2
+http://54.213.167.5/getCommentsByArticleID.php?articleID=1
 {"result":"succ","data":[{"CommentID":"1","CommentContent":"something that is to be expressed through some medium, as speech, writing, or any of various arts: a poetic form adequate to a poetic content.","MemberID":"1","PostDate":"2014-06-17 23:42:46","UpdateDate":"2014-06-17 00:00:00","AccountName":"Neobility"},{"CommentID":"2","CommentContent":"something that is to be expressed through some medium, as speech, writing, or any of various arts: a poetic form adequate to a poetic content.","MemberID":"1","PostDate":"2014-06-17 23:48:47","UpdateDate":null,"AccountName":"Neobility"}]}
 
-http://54.213.167.5/getRestInfo.php?page=1&limit=2
-{"result":"succ","data":[{"AdID":"1","Title":"Ad1","Content":"????","MemberID":"1","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","DeliverPrice":"100","Image":"http:\/\/54.213.167.5\/image\/123.jpg"},{"AdID":"2","Title":"Old house","Content":null,"MemberID":"1","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","DeliverPrice":"100","Image":"http:\/\/54.213.167.5\/image\/123.jpg"}]}
+http://54.213.167.5/getRestInfo.php?page=1&limit=5&region=-1
+{"result":"succ","data":[{"AdID":"1","Title":"\u7cbe\u6b66\u9e2d\u8116","Content":"\u5185\u5bb9dda","MemberID":"14","ServiceRegion":"2","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","DeliverPrice":"100","Image":"http:\/\/54.213.167.5\/image\/6755670_184409036000_2.jpg"},{"AdID":"2","Title":"Old house","Content":"\u5185\u5bb9","MemberID":"15","ServiceRegion":"1","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","DeliverPrice":"100","Image":"http:\/\/54.213.167.5\/image\/7168009_015936677000_2.jpg"},{"AdID":"3","Title":"\u8f9b\u9999\u6c47","Content":"\u5185\u5bb9","MemberID":"2","ServiceRegion":"2","Address":"address","Longitude":"22.22000000","Latitude":"0.00000000","DeliverPrice":"2","Image":"http:\/\/54.213.167.5\/image\/8259192_094121427000_2.jpg"}]}
 
 http://54.213.167.5/postCommentToArticle.php?articleID=1&memberID=1&commentContent=content
 {"result":"succ"}
@@ -105,3 +105,17 @@ http://54.213.167.5/getArticleByArticleIssue.php?articleIssue=0
 
 http://54.213.167.5/getAdInfoByMemberID.php?memberID=1&page=1&limit=2
 {"result":"succ","data":[{"AdID":"1","Title":"Ad1","Content":"????","AdType":"1","PostDate":"2013-06-15 00:00:00","UpdateDate":"2013-06-17 00:00:00","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","AccountName":"Neobility","Email":"neo.wu2@gmail.com","Phone":"6478990689","Role":"0"},{"AdID":"2","Title":"Old house","Content":null,"AdType":"0","PostDate":"2013-06-15 00:00:00","UpdateDate":"2013-06-17 00:00:00","ServiceRegion":"Scarborough","Address":"xxxx","Longitude":"-77.17450000","Latitude":"38.95210000","AccountName":"Neobility","Email":"neo.wu2@gmail.com","Phone":"6478990689","Role":"0"}]}
+
+
+http://54.213.167.5/postMessage.php?content=content&memberID=2&adminID=5
+{"result":"succ"}
+
+
+http://54.213.167.5/postFeedback.php?content=content&name=name&phone=6478990689&email=email
+{"result":"succ"}
+
+http://54.213.167.5/deleteThreadByThreadIDAndMemberID.php?threadID=105&memberID=20
+{"result":"succ"}
+
+http://54.213.167.5/getThreadListByMemberID.php?memberID=2&limit=20&page=1
+{"result":"succ","imageTotalNum":3,"textTotalNum":10,"data":[{"ThreadID":"10","ThreadTitle":"title","ThreadPostDate":"2014-06-19 03:02:25","ThreadUpdateDate":null,"ThreadContent":"that which may be perceived in something: the latent versus the manifest content of a dream","ThreadImages":[{"ImageID":"15","ImageUrl":"http:\/\/54.213.167.5\/image\/thread\/20140724-141504-80102.jpg"}],"ThreadType":"1","LastCommentDate":null,"TimeDiff":""},{"ThreadID":"9","ThreadTitle":"title","ThreadPostDate":"2014-06-19 03:02:05","ThreadUpdateDate":null,"ThreadContent":"that which may be perceived in something: the latent versus the manifest content of a dream","ThreadImages":[{"ImageID":"14","ImageUrl":"http:\/\/54.213.167.5\/image\/thread\/20140724-142028-70503.jpg"}],"ThreadType":"1","LastCommentDate":null,"TimeDiff":""},{"ThreadID":"8","ThreadTitle":"title","ThreadPostDate":"2014-06-18 23:54:51","ThreadUpdateDate":null,"ThreadContent":"that which may be perceived in something: the latent versus the manifest content of a dream","ThreadImages":[{"ImageID":"11","ImageUrl":"http:\/\/54.213.167.5\/image\/thread\/20140724-142425-85502.jpg"},{"ImageID":"12","ImageUrl":"http:\/\/54.213.167.5\/image\/thread\/20140724-142425-85502.jpg"},{"ImageID":"13","ImageUrl":"http:\/\/54.213.167.5\/image\/thread\/20140724-142349-43703.jpg"}],"ThreadType":"1","LastCommentDate":null,"TimeDiff":""}]}

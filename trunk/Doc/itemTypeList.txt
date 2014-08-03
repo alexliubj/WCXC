@@ -1,0 +1,7 @@
+			  <option value="1">主食</option>
+			  <option value="2">小炒</option>
+			  <option value="3">凉菜</option>
+			  <option value="4">汤羹</option>
+			  <option value="5">饮料</option>
+			  <option value="6">特色菜</option>
+			  <option value="7">其他</option>

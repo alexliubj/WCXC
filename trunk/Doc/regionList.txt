@@ -1,0 +1,9 @@
+			  <option value="1" <eq name="info.ServiceRegion" value="1">selected</eq>>多市中心</option>
+			  <option value="2" <eq name="info.ServiceRegion" value="2">selected</eq>>东约克</option>
+			  <option value="3" <eq name="info.ServiceRegion" value="3">selected</eq>>北约克</option>
+			  <option value="4" <eq name="info.ServiceRegion" value="4">selected</eq>>世嘉堡</option>
+			  <option value="5" <eq name="info.ServiceRegion" value="5">selected</eq>>万锦</option>
+			  <option value="6" <eq name="info.ServiceRegion" value="6">selected</eq>>密西沙加</option>
+			  <option value="7" <eq name="info.ServiceRegion" value="7">selected</eq>>旺市</option>
+			  <option value="8" <eq name="info.ServiceRegion" value="8">selected</eq>>列治文山</option>
+			  <option value="0" <eq name="info.ServiceRegion" value="0">selected</eq>>大多其他地区</option>
